@@ -34,14 +34,35 @@ namespace BuildIt
         public EffectList buildWood;
 
         public CustomPieceTable improvedHammer;
+        public static ConfigEntry<float> placementOffsetIncrementConfig;
+        public static ConfigEntry<bool> placementOffsetEnabledConfig;
+        public static ConfigEntry<bool> hidePlaceMarkerConfig;
 
         private void Awake()
         {
+            Patches.SetupPlacementHooks();
+            SetupConfig();
             LoadAssets();
             ItemManager.OnVanillaItemsAvailable += LoadSounds;
             LoadHammerTable();
             LoadHammer();
             
+        }
+
+        private void SetupConfig()
+        {
+            placementOffsetIncrementConfig = Config.Bind(
+                "Placement", "Placement change increment", 0.01f,
+                new ConfigDescription("Placement change when holding Ctrl and/or Alt while scrolling using the Improved Hammer"));
+
+            placementOffsetEnabledConfig = Config.Bind(
+                 "Placement", "Enable placement change with Ctrl + Alt", true,
+                 new ConfigDescription("Enable placement change when holding Ctrl and/or Alt while scrolling using the Improved Hammer"));
+
+            hidePlaceMarkerConfig = Config.Bind(
+                 "Placement", "Hide placement marker", true,
+                 new ConfigDescription("Hide the yellow placement marker while using the Improved Hammer"));
+
         }
 
         public void LoadAssets()
