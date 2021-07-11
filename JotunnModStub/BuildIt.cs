@@ -18,29 +18,36 @@ namespace BuildIt
     {
         public const string PluginGUID = "RockerKitten.BuildIt";
         public const string PluginName = "BuildIt";
-        public const string PluginVersion = "0.0.1";
+        public const string PluginVersion = "1.0.0";
         public AssetBundle assetBundle;
         public EffectList buildStone;
         //public EffectList cookingSound;
         public EffectList breakStone;
         public EffectList hitStone;
-        //public EffectList buildKitten;
+        public EffectList breakWood;
+        public EffectList hitWood;
+        public EffectList buildMetal;
+        public EffectList breakMetal;
+        public EffectList hitMetal;
         public EffectList hearthAddFuel;
         public EffectList fireAddFuel;
-        public EffectList treeDestroyed;
-        public EffectList treeHit;
-        public EffectList logHit;
-        public EffectList logDestroy;
+        public EffectList buildRug;
+        ///public EffectList treeDestroyed;
+        ///public EffectList treeHit;
+        ///public EffectList logHit;
+        ///public EffectList logDestroy;
         public EffectList buildWood;
+        public AudioSource fireVol;
+        //public AudioSource fire2Vol;
 
         public CustomPieceTable improvedHammer;
 
         private void Awake()
         {
             LoadAssets();
-            ItemManager.OnVanillaItemsAvailable += LoadSounds;
             LoadHammerTable();
             LoadHammer();
+            ItemManager.OnVanillaItemsAvailable += LoadSounds;
             
         }
 
@@ -50,14 +57,15 @@ namespace BuildIt
         }
         private void LoadSounds()
         {
-            //try
-            //{
+            try
+            {
                 var sfxstonebuild = PrefabManager.Cache.GetPrefab<GameObject>("sfx_build_hammer_stone");
                 var vfxstonebuild = PrefabManager.Cache.GetPrefab<GameObject>("vfx_Place_stone_wall_2x1");
                 var sfxwoodbuild = PrefabManager.Cache.GetPrefab<GameObject>("sfx_build_hammer_wood");
                 var sfxbreakstone = PrefabManager.Cache.GetPrefab<GameObject>("sfx_rock_destroyed");
                 var sfxwoodbreak = PrefabManager.Cache.GetPrefab<GameObject>("sfx_wood_break");
-                var sfxmetalbuild = PrefabManager.Cache.GetPrefab<GameObject>("");
+                var sfxmetalbuild = PrefabManager.Cache.GetPrefab<GameObject>("sfx_build_hammer_metal");
+                var vfxmetalhit = PrefabManager.Cache.GetPrefab<GameObject>("vfx_HitSparks");
                 var vfxadd = PrefabManager.Cache.GetPrefab<GameObject>("vfx_FireAddFuel");
                 var sfxadd = PrefabManager.Cache.GetPrefab<GameObject>("sfx_FireAddFuel");
                 var sfxstonehit = PrefabManager.Cache.GetPrefab<GameObject>("sfx_Rock_Hit");
@@ -70,19 +78,24 @@ namespace BuildIt
                 var sfxtfall = PrefabManager.Cache.GetPrefab<GameObject>("sfx_tree_fall");
                 var vfxwoodhit = PrefabManager.Cache.GetPrefab<GameObject>("vfx_SawDust");
                 var vfxdestroyloghalf = PrefabManager.Cache.GetPrefab<GameObject>("vfx_firlogdestroyed_half");
-               
+                var sfxbuildrug = PrefabManager.Cache.GetPrefab<GameObject>("sfx_build_hammer_default");
 
                 buildStone = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxstonebuild }, new EffectList.EffectData { m_prefab = vfxstonebuild } } };
-                buildWood = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxwoodbuild }, new EffectList.EffectData { m_prefab = sfxstonebuild } } };
-                breakStone = new EffectList { m_effectPrefabs = new EffectList.EffectData[1] { new EffectList.EffectData { m_prefab = sfxbreakstone } } };
+                breakStone = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxbreakstone }, new EffectList.EffectData { m_prefab = vfxwoodhit } } };
                 hitStone = new EffectList { m_effectPrefabs = new EffectList.EffectData[1] { new EffectList.EffectData { m_prefab = sfxstonehit } } };
-                //buildKitten = new EffectList { m_effectPrefabs = new EffectList.EffectData[1] { new EffectList.EffectData { m_prefab = sfxstone } } };
+                buildWood = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxwoodbuild }, new EffectList.EffectData { m_prefab = vfxstonebuild } } };
+                breakWood = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxwoodbreak }, new EffectList.EffectData { m_prefab = vfxwoodhit } } };
+                hitWood = new EffectList { m_effectPrefabs = new EffectList.EffectData[1] { new EffectList.EffectData { m_prefab = vfxwoodhit} } };
+                buildMetal = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxmetalbuild }, new EffectList.EffectData {m_prefab =  vfxstonebuild} } };
+                breakMetal = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxbreakstone }, new EffectList.EffectData { m_prefab = vfxmetalhit } } };
+                hitMetal = new EffectList { m_effectPrefabs = new EffectList.EffectData[1] { new EffectList.EffectData { m_prefab = vfxmetalhit } } };
                 hearthAddFuel = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxaddfuel }, new EffectList.EffectData { m_prefab = sfxadd } } };
                 fireAddFuel = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxadd }, new EffectList.EffectData { m_prefab = sfxadd } } };
-                treeDestroyed = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxadd }, new EffectList.EffectData { m_prefab = sfxadd } } };
-                treeHit = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxwoodhit }, new EffectList.EffectData { m_prefab = sfxtreehit} } };
-                logHit = new EffectList { m_effectPrefabs = new EffectList.EffectData[3] { new EffectList.EffectData { m_prefab = sfxtreefall }, new EffectList.EffectData { m_prefab = vfxtreefallhit }, new EffectList.EffectData { m_prefab = sfxtreehit } } };
-                logDestroy = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxdestroyloghalf }, new EffectList.EffectData { m_prefab = sfxwoodbreak } } };
+                buildRug = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxbuildrug }, new EffectList.EffectData { m_prefab = vfxstonebuild } } };
+                ///treeDestroyed = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxadd }, new EffectList.EffectData { m_prefab = sfxadd } } };
+                ///treeHit = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxwoodhit }, new EffectList.EffectData { m_prefab = sfxtreehit} } };
+                ///logHit = new EffectList { m_effectPrefabs = new EffectList.EffectData[3] { new EffectList.EffectData { m_prefab = sfxtreefall }, new EffectList.EffectData { m_prefab = vfxtreefallhit }, new EffectList.EffectData { m_prefab = sfxtreehit } } };
+                ///logDestroy = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = vfxdestroyloghalf }, new EffectList.EffectData { m_prefab = sfxwoodbreak } } };
                 LoadBuild1();
                 LoadBuild2();
                 LoadBuild3();
@@ -103,7 +116,6 @@ namespace BuildIt
                 LoadBuild18();
                 LoadBuild19();
                 //LoadBuild20();
-                LoadBuild21();
                 LoadBuild22();
                 LoadBuild23();
                 LoadBuild24();
@@ -140,23 +152,35 @@ namespace BuildIt
                 LoadBuild55();
                 LoadBuild56();
                 LoadBuild57();
-                LoadBuild58();
                 LoadBuild59();
                 LoadBuild60();
                 LoadBuild61();
                 LoadBuild62();
-                Jotunn.Logger.LogMessage("Loaded Game VFX and SFX");
-            /*}
+                LoadBuild63();
+                LoadBuild64();
+                LoadBuild65();
+                LoadBuild66();
+                LoadBuild67();
+                LoadBuild68();
+                LoadBuild69();
+                LoadBuild58();
+                LoadBuild21();
+
+            fireVol.outputAudioMixerGroup = AudioMan.instance.m_ambientMixer;
+            
+            //fire2Vol.outputAudioMixerGroup = AudioMan.instance.m_ambientMixer;
+            Jotunn.Logger.LogMessage("Loaded Game VFX and SFX");
+            }
             catch (Exception ex)
             {
                 Jotunn.Logger.LogError($"Error while running OnVanillaLoad: {ex.Message}");
             }
             finally
-            {*/
+            {
                 Jotunn.Logger.LogMessage("Load Complete. Bone Appetit yall.");
 
                 ItemManager.OnVanillaItemsAvailable -= LoadSounds;
-            //}
+            }
         }
         private void LoadHammerTable()
         {
@@ -190,7 +214,7 @@ namespace BuildIt
                     MinStationLevel = 1,
                     Requirements = new[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 1, Recover = true}
+                        new RequirementConfig {Item = "Wood", Amount = 4, Recover = true, AmountPerLevel =1}
                     }
                 });
             ItemManager.Instance.AddItem(item);
@@ -214,6 +238,11 @@ namespace BuildIt
                 });
             var fxBuild = buildFab.GetComponent<Piece>();
             fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild2()
@@ -233,6 +262,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild3()
@@ -252,6 +288,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild4()
@@ -271,6 +314,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild5()
@@ -292,6 +342,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild6()
@@ -311,6 +368,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild7()
@@ -330,6 +394,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild8()
@@ -345,10 +416,17 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 4, Recover = true}
+                        new RequirementConfig {Item = "FineWood", Amount = 4, Recover = true}
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild9()
@@ -369,6 +447,13 @@ namespace BuildIt
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildMetal;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakMetal;
+            breakfx.m_hitEffect = hitMetal;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild10()
@@ -388,6 +473,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild11()
@@ -407,6 +499,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild12()
@@ -426,6 +525,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild13()
@@ -445,6 +551,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild14()
@@ -464,6 +577,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild15()
@@ -483,6 +603,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild16()
@@ -498,10 +625,18 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Tin", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Tin", Amount = 2, Recover = true},
+                        new RequirementConfig {Item = "Resin", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildMetal;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakMetal;
+            breakfx.m_hitEffect = hitMetal;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild17()
@@ -517,10 +652,18 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Tin", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Tin", Amount = 2, Recover = true},
+                        new RequirementConfig {Item = "Resin", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildMetal;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakMetal;
+            breakfx.m_hitEffect = hitMetal;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild18()
@@ -536,10 +679,18 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Tin", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Tin", Amount = 2, Recover = true},
+                        new RequirementConfig {Item = "Resin", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildMetal;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakMetal;
+            breakfx.m_hitEffect = hitMetal;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild19()
@@ -559,6 +710,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         /*private void LoadBuild20()
@@ -593,10 +751,21 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Iron", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Iron", Amount = 2, Recover = true},
+                        new RequirementConfig {Item = "Coal", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildMetal;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakMetal;
+            breakfx.m_hitEffect = hitMetal;
+
+            fireVol = buildFab.GetComponentInChildren<AudioSource>();
+            
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild22()
@@ -610,12 +779,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Build",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Stone", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Stone", Amount = 4, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild23()
@@ -629,12 +806,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Build",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Stone", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild24()
@@ -654,6 +839,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildRug;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild25()
@@ -673,6 +865,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildRug;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild26()
@@ -692,6 +891,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildRug;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild27()
@@ -711,6 +917,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildRug;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild28()
@@ -731,6 +944,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild29()
@@ -751,6 +971,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild30()
@@ -770,6 +997,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild31()
@@ -789,6 +1023,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild32()
@@ -804,10 +1045,17 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 4, Recover = true}
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild33()
@@ -827,6 +1075,15 @@ namespace BuildIt
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
+            //fireVol = buildFab.GetComponentInChildren<AudioSource>();
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild34()
@@ -840,12 +1097,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Build",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Stone", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild35()
@@ -861,10 +1126,17 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 5, Recover = true}
+                        new RequirementConfig {Item = "Wood", Amount = 10, Recover = true}
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild36()
@@ -878,6 +1150,7 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Other",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Stone", Amount = 10, Recover = true},
@@ -885,6 +1158,13 @@ namespace BuildIt
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild37()
@@ -904,6 +1184,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild38()
@@ -923,6 +1210,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild39()
@@ -942,6 +1236,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild40()
@@ -961,6 +1262,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild41()
@@ -974,12 +1282,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Build",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Stone", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild42()
@@ -993,12 +1309,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Build",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Stone", Amount = 4, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild43()
@@ -1019,6 +1343,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild44()
@@ -1039,6 +1370,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild45()
@@ -1052,12 +1390,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Other",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Stone", Amount = 10, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild46()
@@ -1077,6 +1423,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild47()
@@ -1097,6 +1450,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild48()
@@ -1117,6 +1477,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild49()
@@ -1137,6 +1504,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild50()
@@ -1151,12 +1525,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Other",
                     Enabled = true,
+                    CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Iron", Amount = 1, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildMetal;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakMetal;
+            breakfx.m_hitEffect = hitMetal;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild51()
@@ -1173,10 +1555,18 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Wood", Amount = 1, Recover = true},
+                        new RequirementConfig {Item = "Stone", Amount = 1, Recover = true}
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild52()
@@ -1197,6 +1587,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild53()
@@ -1217,6 +1614,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild54()
@@ -1231,12 +1635,20 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Build",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Stone", Amount = 2, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild55()
@@ -1257,6 +1669,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild56()
@@ -1273,10 +1692,18 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                        new RequirementConfig {Item = "Wood", Amount = 1, Recover = true},
+                        new RequirementConfig {Item = "Stone", Amount = 1, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild57()
@@ -1297,6 +1724,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild58()
@@ -1311,12 +1745,22 @@ namespace BuildIt
                     PieceTable = "_RK_HammerPieceTable",
                     Category = "Decorate",
                     Enabled = true,
+                    CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
                     {
                         new RequirementConfig {Item = "Stone", Amount = 8, Recover = true}
                     }
 
                 });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
+            fireVol = buildFab.GetComponentInChildren<AudioSource>();
+            //fire2Vol.outputAudioMixerGroup = AudioMan.instance.m_ambientMixer;
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild59()
@@ -1337,6 +1781,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild60()
@@ -1357,6 +1808,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild61()
@@ -1376,6 +1834,13 @@ namespace BuildIt
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
         }
          private void LoadBuild62()
@@ -1391,37 +1856,237 @@ namespace BuildIt
                      Enabled = true,
                      Requirements = new RequirementConfig[]
                      {
-                         new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                         new RequirementConfig {Item = "Wood", Amount = 10, Recover = true},
+                         new RequirementConfig {Item = "RoundLog", Amount = 6, Recover = true}
                      }
 
                  });
-             var fxBuild = buildFab.GetComponent<Piece>();
-             fxBuild.m_placeEffect = buildWood;
-             PieceManager.Instance.AddPiece(build);
-         }
-         /*private void LoadBuild62()
-         {
-             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof2");
-             var build = new CustomPiece(buildFab,
-                 new PieceConfig
-                 {
-                     Name = "45 Roof 2",
-                     AllowedInDungeons = false,
-                     PieceTable = "_RK_HammerPieceTable",
-                     Category = "Build",
-                     Enabled = true,
-                     Requirements = new RequirementConfig[]
-                     {
-                         new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
-                     }
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
 
-                 });
-             PieceManager.Instance.AddPiece(build);
-         }
-         /*private void LoadTree()
-            {
-                var tree = assetBundle.LoadAsset<GameObject>("rk_cherryblossom3");
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
 
-            }*/
+            PieceManager.Instance.AddPiece(build);
+         }
+        private void LoadBuild63()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_woodrack");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Wood Rack",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Decorate",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                         new RequirementConfig {Item = "Wood", Amount = 20, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild64()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_outhouse");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Outhouse",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Other",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                         new RequirementConfig {Item = "Wood", Amount = 20, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild65()
+        {
+
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_hearthdim");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Smokless Dimmer Hearth",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Decorate",
+                    Enabled = true,
+                    CraftingStation = "piece_stonecutter",
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Stone", Amount = 15, Recover = true}
+                    }
+
+                });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
+            fireVol = buildFab.GetComponentInChildren<AudioSource>();
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild66()
+        {
+
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_stairstone2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Stone Roof",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Build",
+                    Enabled = true,
+                    CraftingStation = "piece_stonecutter",
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Stone", Amount = 6, Recover = true}
+                    }
+
+                });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild67()
+        {
+
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_stairstone");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Stone Roof Long",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Build",
+                    Enabled = true,
+                    CraftingStation = "piece_stonecutter",
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Stone", Amount = 4, Recover = true}
+                    }
+
+                });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild68()
+        {
+
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_stairstone3");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Stone Stairs",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Build",
+                    Enabled = true,
+                    CraftingStation = "piece_stonecutter",
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Stone", Amount = 4, Recover = true}
+                    }
+
+                });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild69()
+        {
+
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_stool");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Toilet Seat",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Build",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 4, Recover = true}
+                    }
+
+                });
+            var buildfx = buildFab.GetComponent<Piece>();
+            buildfx.m_placeEffect = buildStone;
+
+            var breakfx = buildFab.GetComponent<WearNTear>();
+            breakfx.m_destroyedEffect = breakStone;
+            breakfx.m_hitEffect = hitStone;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+
+        /*private void LoadBuild62()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Roof 2",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RK_HammerPieceTable",
+                    Category = "Build",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            PieceManager.Instance.AddPiece(build);
+        }
+        /*private void LoadTree()
+           {
+               var tree = assetBundle.LoadAsset<GameObject>("rk_cherryblossom3");
+
+           }*/
     }
 }
