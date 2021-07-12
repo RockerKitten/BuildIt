@@ -33,11 +33,11 @@ namespace BuildIt
             return result;
         }
 
-        //Remove the yellow placement marker when using the RK_Hammer
+        //Remove the yellow placement marker when using the rk_hammer
         private static void OnUpdatePlacementGhost(On.Player.orig_UpdatePlacementGhost orig, Player self, bool flashGuardStone)
         {
             orig(self, flashGuardStone);
-            if (BuildIt.hidePlaceMarkerConfig.Value && self.m_placementMarkerInstance && self.m_buildPieces && self.m_buildPieces.name == "_RK_HammerPieceTable")
+            if (BuildIt.hidePlaceMarkerConfig.Value && self.m_placementMarkerInstance && self.m_buildPieces && self.m_buildPieces.name == "_RKCustomTable")
             {
                 Object.Destroy(self.m_placementMarkerInstance);
             }
@@ -48,7 +48,7 @@ namespace BuildIt
         {
             orig(self, takeInput, dt);
 
-            if (BuildIt.placementOffsetEnabledConfig.Value && self.m_placementGhost && takeInput && self.m_buildPieces && self.m_buildPieces.name == "_RK_HammerPieceTable")
+            if (BuildIt.placementOffsetEnabledConfig.Value && self.m_placementGhost && takeInput && self.m_buildPieces && self.m_buildPieces.name == "_RKCustomTable")
             {
                 float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
                 if (scrollWheel != 0f)
