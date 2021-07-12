@@ -13,12 +13,12 @@ namespace BuildIt
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
-    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
+    [NetworkCompatibility(CompatibilityLevel.OnlySyncWhenInstalled, VersionStrictness.Minor)]
     internal class BuildIt : BaseUnityPlugin
     {
         public const string PluginGUID = "RockerKitten.BuildIt";
         public const string PluginName = "BuildIt";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.1.0";
         public AssetBundle assetBundle;
         public EffectList buildStone;
         //public EffectList cookingSound;
@@ -46,7 +46,7 @@ namespace BuildIt
         {
             LoadAssets();
             LoadHammerTable();
-            LoadHammer();
+            //LoadHammer();
             ItemManager.OnVanillaItemsAvailable += LoadSounds;
             
         }
@@ -115,7 +115,7 @@ namespace BuildIt
                 LoadBuild17();
                 LoadBuild18();
                 LoadBuild19();
-                //LoadBuild20();
+                LoadBuild20();
                 LoadBuild22();
                 LoadBuild23();
                 LoadBuild24();
@@ -163,9 +163,34 @@ namespace BuildIt
                 LoadBuild67();
                 LoadBuild68();
                 LoadBuild69();
+                LoadBuild70();
+                LoadBuild71();
+                LoadBuild72();
+                LoadBuild73();
+                LoadBuild74();
+                LoadBuild75();
+                LoadBuild76();
+                LoadBuild77();
+                LoadBuild78();
+                LoadBuild79();
+                LoadBuild80();
+                LoadBuild81();
+                LoadBuild82();
+                LoadBuild83();
+                LoadBuild84();
+                LoadBuild85();
+                LoadBuild86();
+                LoadBuild87();
+                LoadBuild88();
+                LoadBuild89();
+                LoadBuild90();
+                LoadBuild91();
+                LoadBuild92();
+                LoadBuild93();
+                //LoadBuild94();
+
                 LoadBuild58();
                 LoadBuild21();
-
             fireVol.outputAudioMixerGroup = AudioMan.instance.m_ambientMixer;
             
             //fire2Vol.outputAudioMixerGroup = AudioMan.instance.m_ambientMixer;
@@ -177,14 +202,14 @@ namespace BuildIt
             }
             finally
             {
-                Jotunn.Logger.LogMessage("Load Complete. Bone Appetit yall.");
+                //Jotunn.Logger.LogMessage("Load Complete. Bone Appetit yall.");
 
                 ItemManager.OnVanillaItemsAvailable -= LoadSounds;
             }
         }
         private void LoadHammerTable()
         {
-            var hammerTableFab = assetBundle.LoadAsset<GameObject>("_RK_HammerPieceTable");
+            var hammerTableFab = assetBundle.LoadAsset<GameObject>("_RKCustomTable");
             improvedHammer = new CustomPieceTable(hammerTableFab,
             new PieceTableConfig
             {
@@ -193,11 +218,11 @@ namespace BuildIt
                 UseCustomCategories = true,
                 CustomCategories = new string[]
                 {
-                    "Build", "Furnish", "Decorate", "Other"
+                    "Structure", "Furniture", "Decor", "Outdoors"
                 }
             });
             PieceManager.Instance.AddPieceTable(improvedHammer);
-            
+            LoadHammer();
         }
         private void LoadHammer()
         {
@@ -208,13 +233,14 @@ namespace BuildIt
                     Name = "$ImprovedHammer",
                     Amount = 1,
                     Enabled = true,
-                    PieceTable = "_RK_HammerPieceTable",
-                    CraftingStation = "piece_workbench",
+                    PieceTable = "_RKCustomTable",
+                    //CraftingStation = "piece_workbench",
                     RepairStation = "piece_workbench",
-                    MinStationLevel = 1,
+                    //MinStationLevel = 1,
                     Requirements = new[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 4, Recover = true, AmountPerLevel =1}
+                        new RequirementConfig {Item = "Wood", Amount = 4},
+                        new RequirementConfig {Item = "Stone", Amount = 2}
                     }
                 });
             ItemManager.Instance.AddItem(item);
@@ -227,8 +253,8 @@ namespace BuildIt
                 {
                     Name = "45 Corner Roof",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -253,8 +279,8 @@ namespace BuildIt
                 {
                     Name = "45 Roof",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -279,8 +305,8 @@ namespace BuildIt
                 {
                     Name = "45 Wood Corner Roof",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -305,8 +331,8 @@ namespace BuildIt
                 {
                     Name = "45 Wood Roof",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -331,8 +357,8 @@ namespace BuildIt
                 {
                     Name = "Bed",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Furnish",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Furniture",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -359,8 +385,8 @@ namespace BuildIt
                 {
                     Name = "Black Pine Tree",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -385,8 +411,8 @@ namespace BuildIt
                 {
                     Name = "Bucket",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -411,8 +437,8 @@ namespace BuildIt
                 {
                     Name = "Cabinet",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Furnish",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Furniture",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -437,8 +463,8 @@ namespace BuildIt
                 {
                     Name = "Candle",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -464,8 +490,8 @@ namespace BuildIt
                 {
                     Name = "Chair",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Furnish",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Furniture",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -490,8 +516,8 @@ namespace BuildIt
                 {
                     Name = "Cherry Blossom Tree",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -516,8 +542,8 @@ namespace BuildIt
                 {
                     Name = "Cherry Blossom Tree 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -542,8 +568,8 @@ namespace BuildIt
                 {
                     Name = "Fence",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -568,8 +594,8 @@ namespace BuildIt
                 {
                     Name = "Fence 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -594,8 +620,8 @@ namespace BuildIt
                 {
                     Name = "Fence Half",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -620,8 +646,8 @@ namespace BuildIt
                 {
                     Name = "Lamp - Table",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -647,8 +673,8 @@ namespace BuildIt
                 {
                     Name = "Lamp Hanging",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -674,8 +700,8 @@ namespace BuildIt
                 {
                     Name = "Lamp Post",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -701,8 +727,8 @@ namespace BuildIt
                 {
                     Name = "Maple Tree",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -719,25 +745,33 @@ namespace BuildIt
 
             PieceManager.Instance.AddPiece(build);
         }
-        /*private void LoadBuild20()
+        private void LoadBuild20()
         {
-            var buildFab = assetBundle.LoadAsset<GameObject>("rk_outhouse");
+
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_crate2");
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "",
+                    Name = "Crate",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
-                        new RequirementConfig {Item = "", Amount = 1, Recover = true}
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
                     }
 
                 });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
             PieceManager.Instance.AddPiece(build);
-        }*/
+        }
         private void LoadBuild21()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_groundbrazier");
@@ -746,8 +780,8 @@ namespace BuildIt
                 {
                     Name = "Ground Brazier",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -776,8 +810,8 @@ namespace BuildIt
                 {
                     Name = "Stone Post 4m",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -803,8 +837,8 @@ namespace BuildIt
                 {
                     Name = "Stone Post 2m",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -830,8 +864,8 @@ namespace BuildIt
                 {
                     Name = "Rug Large",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -856,8 +890,8 @@ namespace BuildIt
                 {
                     Name = "Rug 2 Small",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -882,8 +916,8 @@ namespace BuildIt
                 {
                     Name = "Rug 2 Large",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -908,8 +942,8 @@ namespace BuildIt
                 {
                     Name = "Rug Small",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -934,8 +968,8 @@ namespace BuildIt
                 {
                     Name = "Screen",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -961,8 +995,8 @@ namespace BuildIt
                 {
                     Name = "Screen 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -988,8 +1022,8 @@ namespace BuildIt
                 {
                     Name = "Shelf Long",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Furnish",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Furniture",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1014,8 +1048,8 @@ namespace BuildIt
                 {
                     Name = "Shelf Short",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Furnish",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Furniture",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1040,8 +1074,8 @@ namespace BuildIt
                 {
                     Name = "Side Table",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Furnish",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Furniture",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1066,8 +1100,8 @@ namespace BuildIt
                 {
                     Name = "Stone Hearth",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1094,8 +1128,8 @@ namespace BuildIt
                 {
                     Name = "Stone Slab",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1121,8 +1155,8 @@ namespace BuildIt
                 {
                     Name = "Table",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Furnish",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Furniture",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1147,8 +1181,8 @@ namespace BuildIt
                 {
                     Name = "Well",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1175,8 +1209,8 @@ namespace BuildIt
                 {
                     Name = "Window Tall",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1201,8 +1235,8 @@ namespace BuildIt
                 {
                     Name = "Window Medium",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1227,8 +1261,8 @@ namespace BuildIt
                 {
                     Name = "Window Short",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1253,8 +1287,8 @@ namespace BuildIt
                 {
                     Name = "Window Simple",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1279,8 +1313,8 @@ namespace BuildIt
                 {
                     Name = "Window Small Stone",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1306,8 +1340,8 @@ namespace BuildIt
                 {
                     Name = "Window Long Stone",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1333,8 +1367,8 @@ namespace BuildIt
                 {
                     Name = "Fence Heavy",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1360,8 +1394,8 @@ namespace BuildIt
                 {
                     Name = "Fence Heavy Corner",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1387,8 +1421,8 @@ namespace BuildIt
                 {
                     Name = "Fountain",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1414,8 +1448,8 @@ namespace BuildIt
                 {
                     Name = "Cherry Blossom Tree 3",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1441,8 +1475,8 @@ namespace BuildIt
                 {
                     Name = "Cherry Blossom Tree 4",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1468,8 +1502,8 @@ namespace BuildIt
                 {
                     Name = "Barrel",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1495,8 +1529,8 @@ namespace BuildIt
                 {
                     Name = "Crate",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1522,8 +1556,8 @@ namespace BuildIt
                 {
                     Name = "Fence Iron",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -1550,8 +1584,8 @@ namespace BuildIt
                 {
                     Name = "Floor",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1578,8 +1612,8 @@ namespace BuildIt
                 {
                     Name = "26 Roof",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1605,8 +1639,8 @@ namespace BuildIt
                 {
                     Name = "26 Roof Corner",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1632,8 +1666,8 @@ namespace BuildIt
                 {
                     Name = "Wall",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1660,8 +1694,8 @@ namespace BuildIt
                 {
                     Name = "Wall 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1687,8 +1721,8 @@ namespace BuildIt
                 {
                     Name = "Wall 3",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1715,8 +1749,8 @@ namespace BuildIt
                 {
                     Name = "Wall 4",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1742,8 +1776,8 @@ namespace BuildIt
                 {
                     Name = "Small Hearth",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1772,8 +1806,8 @@ namespace BuildIt
                 {
                     Name = "26 Roof 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1799,8 +1833,8 @@ namespace BuildIt
                 {
                     Name = "26 Roof Corner 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1825,8 +1859,8 @@ namespace BuildIt
                 {
                     Name = "Fence 4",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1851,8 +1885,8 @@ namespace BuildIt
                  {
                      Name = "Tower",
                      AllowedInDungeons = false,
-                     PieceTable = "_RK_HammerPieceTable",
-                     Category = "Other",
+                     PieceTable = "_RKCustomTable",
+                     Category = "Outdoors",
                      Enabled = true,
                      Requirements = new RequirementConfig[]
                      {
@@ -1878,8 +1912,8 @@ namespace BuildIt
                 {
                     Name = "Wood Rack",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1904,8 +1938,8 @@ namespace BuildIt
                 {
                     Name = "Outhouse",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Other",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1931,8 +1965,8 @@ namespace BuildIt
                 {
                     Name = "Smokless Dimmer Hearth",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Decorate",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1959,10 +1993,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Roof",
+                    Name = "Stone Roof 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1987,10 +2021,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Roof Long",
+                    Name = "Stone Roof",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -2017,8 +2051,8 @@ namespace BuildIt
                 {
                     Name = "Stone Stairs",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -2045,8 +2079,8 @@ namespace BuildIt
                 {
                     Name = "Toilet Seat",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Outdoors",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2063,6 +2097,634 @@ namespace BuildIt
 
             PieceManager.Instance.AddPiece(build);
         }
+        private void LoadBuild70()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26beam");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Beam",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild71()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26inner");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Inner Roof Corner",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild72()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26inner2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Inner Roof Corner",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild73()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26ridge");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Roof Ridge",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild74()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26ridge2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Roof Ridge",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild75()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26roof_x");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Roof X",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild76()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Wall Top",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild77()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "26 Wall Top",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild78()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45beam");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Beam",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild79()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45inner");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Inner Roof Corner",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild80()
+        {
+
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_barrel2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Barrel",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Decor",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild81()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45inner2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Inner Roof Corner",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild82()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45ridge");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Roof Ridge",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild83()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45ridge2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Roof Ridge",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild84()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof_x");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Roof X",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild85()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Wall Top",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild86()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "45 Wall Top",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild87()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall5");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Half Wall",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild88()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall6");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Half Wall",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild89()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall7");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Half Wall",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild90()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall8");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Half Wall",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    CraftingStation = "piece_stonecutter",
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Stone", Amount = 2, Recover = true}
+
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild91()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall9");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Half Wall",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 1, Recover = true},
+                        new RequirementConfig {Item = "Stone", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild92()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_glassdoor");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Glass Door",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild93()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_glassdoor2");
+            var build = new CustomPiece(buildFab,
+                new PieceConfig
+                {
+                    Name = "Glass Door",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new RequirementConfig[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 2, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            PieceManager.Instance.AddPiece(build);
+        }
 
         /*private void LoadBuild62()
         {
@@ -2072,8 +2734,8 @@ namespace BuildIt
                 {
                     Name = "45 Roof 2",
                     AllowedInDungeons = false,
-                    PieceTable = "_RK_HammerPieceTable",
-                    Category = "Build",
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
