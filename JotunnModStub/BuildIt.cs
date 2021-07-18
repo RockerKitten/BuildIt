@@ -13,7 +13,7 @@ namespace BuildIt
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
-    [NetworkCompatibility(CompatibilityLevel.OnlySyncWhenInstalled, VersionStrictness.Minor)]
+    [NetworkCompatibility(CompatibilityLevel.OnlySyncWhenInstalled, VersionStrictness.Major)]
     internal class BuildIt : BaseUnityPlugin
     {
         public const string PluginGUID = "RockerKitten.BuildIt";
