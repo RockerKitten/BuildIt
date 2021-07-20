@@ -5,18 +5,18 @@ namespace BuildIt
 {
     internal class Patches
     {
-        private static Vector3 PlacementOffset = Vector3.zero;
+       // private static Vector3 PlacementOffset = Vector3.zero;
 
         public static void SetupPlacementHooks()
         {
             On.Player.UpdatePlacementGhost += OnUpdatePlacementGhost;
-            On.Player.SetupPlacementGhost += OnSetupPlacementGhost;
-            On.Player.PieceRayTest += OnPieceRayTest;
-            On.Player.UpdatePlacement += OnUpdatePlacement;
+            //On.Player.SetupPlacementGhost += OnSetupPlacementGhost;
+            //On.Player.PieceRayTest += OnPieceRayTest;
+            //On.Player.UpdatePlacement += OnUpdatePlacement;
         }
 
         //Reset the placement offset whenever the placer chooses another piece
-        private static void OnSetupPlacementGhost(On.Player.orig_SetupPlacementGhost orig, Player self)
+        /*private static void OnSetupPlacementGhost(On.Player.orig_SetupPlacementGhost orig, Player self)
         {
             PlacementOffset = Vector3.zero;
             orig(self);
@@ -31,7 +31,7 @@ namespace BuildIt
                 point += self.m_placementGhost.transform.TransformDirection(PlacementOffset); // TransformDirection makes the offset relative to the orientation of the piece instead of to the world
             }
             return result;
-        }
+        }*/
 
         //Remove the yellow placement marker when using the rk_hammer
         private static void OnUpdatePlacementGhost(On.Player.orig_UpdatePlacementGhost orig, Player self, bool flashGuardStone)
@@ -44,7 +44,7 @@ namespace BuildIt
         }
 
         //Check for mouse wheel input and update the placement offset
-        private static void OnUpdatePlacement(On.Player.orig_UpdatePlacement orig, Player self, bool takeInput, float dt)
+        /*private static void OnUpdatePlacement(On.Player.orig_UpdatePlacement orig, Player self, bool takeInput, float dt)
         {
             orig(self, takeInput, dt);
 
@@ -90,6 +90,6 @@ namespace BuildIt
             {
                 player.m_placeRotation--;
             }
-        }
+        }*/
     }
 }
