@@ -18,7 +18,7 @@ namespace BuildIt
     {
         public const string PluginGUID = "RockerKitten.BuildIt";
         public const string PluginName = "BuildIt";
-        public const string PluginVersion = "1.3.0";
+        public const string PluginVersion = "1.3.1";
         public AssetBundle assetBundle;
         public EffectList buildStone;
         //public EffectList cookingSound;
@@ -103,7 +103,7 @@ namespace BuildIt
                 var sfxbuildrug = PrefabManager.Cache.GetPrefab<GameObject>("sfx_build_hammer_default");
                 var dooropensfs = PrefabManager.Cache.GetPrefab<GameObject>("sfx_door_open");
                 var doorclosesfx = PrefabManager.Cache.GetPrefab<GameObject>("sfx_door_close");
-                repairFab = PrefabManager.Cache.GetPrefab<GameObject>("piece_repair");
+                //repairFab = PrefabManager.Cache.GetPrefab<GameObject>("piece_repair");
 
 
                 buildStone = new EffectList { m_effectPrefabs = new EffectList.EffectData[2] { new EffectList.EffectData { m_prefab = sfxstonebuild }, new EffectList.EffectData { m_prefab = vfxstonebuild } } };
@@ -123,7 +123,7 @@ namespace BuildIt
 
                 
 
-                Repair();
+                //Repair();
                 LoadBuild76();
                 LoadBuild77();
                 LoadBuild142();
@@ -319,7 +319,7 @@ namespace BuildIt
             LoadHammer();
         }
 
-        private void Repair()
+        /*private void Repair()
         {
             var repair = new CustomPiece(repairFab,
                 new PieceConfig
