@@ -52,7 +52,6 @@ namespace BuildIt
             SetupConfig();
             LoadAssets();
             LoadHammerTable();
-            //LoadHammer();
             ItemManager.OnVanillaItemsAvailable += LoadSounds;
             
         }
