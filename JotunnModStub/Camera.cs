@@ -136,7 +136,7 @@ namespace BuildIt
 			{
 				inBuildMode[Player.m_localPlayer] = true;
 
-				// When entering build mode, we reset the view direction of the build
+				// When entering build mode, we reset the view direction of the build.
 				// camera, so that it matches the player's current direction. Thus, when
 				// entering build mode, there is no (abrupt) change to the camera.
 				var r = Player.m_localPlayer.m_eye.transform.rotation;
