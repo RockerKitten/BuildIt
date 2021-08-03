@@ -67,8 +67,8 @@ namespace BuildIt
                  new ConfigDescription("Enable placement change when holding Ctrl and/or Alt while scrolling using the Improved Hammer"));*/
            
             hidePlaceMarkerConfig = Config.Bind(
-                 "Placement", "Hide placement marker", true,
-                 new ConfigDescription("Hide the yellow placement marker while using the Improved Hammer"));
+                 "Placement", "Скрыть маркер размещения", true,
+                 new ConfigDescription("Скройте желтый маркер размещения при использовании улучшенного молотка"));
 
         }
 
@@ -310,7 +310,7 @@ namespace BuildIt
                 UseCustomCategories = true,
                 CustomCategories = new string[]
                 {
-                    "Structure", "Furniture", "Roofs", "Outdoors", "GreenHouse"
+                    "Структура", "Обстановка", "Крыши", "Двор", "Теплица"
                 }
             });
             
@@ -324,7 +324,7 @@ namespace BuildIt
                 new PieceConfig
                 {
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure"
+                    Category = "Структура"
                 });
             PieceManager.Instance.AddPiece(repair);
         }
@@ -334,7 +334,7 @@ namespace BuildIt
                 new PieceConfig
                 {
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture"
+                    Category = "Обстановка"
                 });
             PieceManager.Instance.AddPiece(repair);
         }
@@ -344,7 +344,7 @@ namespace BuildIt
                 new PieceConfig
                 {
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs"
+                    Category = "Крыши"
                 });
             PieceManager.Instance.AddPiece(repair);
         }
@@ -354,7 +354,7 @@ namespace BuildIt
                 new PieceConfig
                 {
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors"
+                    Category = "Двор"
                 });
             PieceManager.Instance.AddPiece(repair);
         }
@@ -364,7 +364,7 @@ namespace BuildIt
                 new PieceConfig
                 {
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse"
+                    Category = "Теплица"
                 });
             PieceManager.Instance.AddPiece(repair);
         }*/
@@ -395,10 +395,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Corner Roof",
+                    Name = "45 Угловая крыша",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -421,10 +421,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Roof",
+                    Name = "45 Крыша",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -447,10 +447,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Wood Corner Roof",
+                    Name = "45 Деревянная угловая крыша",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -473,10 +473,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Wood Roof",
+                    Name = "45 Деревянная крыша",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -499,10 +499,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Bed",
+                    Name = "Кровать",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -527,10 +527,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Black Pine Tree",
+                    Name = "Черная Сосна",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -553,10 +553,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Bucket",
+                    Name = "Ведро",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -579,10 +579,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Cabinet",
+                    Name = "Буфет II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -605,10 +605,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Candle",
+                    Name = "Свеча",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -632,10 +632,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Chair",
+                    Name = "Стул",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -658,10 +658,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Cherry Blossom Tree",
+                    Name = "Вишневое дерево в цвету",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -684,10 +684,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Cherry Blossom Tree 2",
+                    Name = "Цветущая вишня",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -710,10 +710,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fence",
+                    Name = "Забор I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -736,10 +736,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fence 2",
+                    Name = "Забор II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -762,10 +762,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fence Half",
+                    Name = "Половина забора I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -788,10 +788,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Lamp - Table",
+                    Name = "Настольный фонарь",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -815,10 +815,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Lamp Hanging",
+                    Name = "Подвесной фонарь",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -842,10 +842,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Lamp Post",
+                    Name = "Фонарный столб",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -869,10 +869,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Maple Tree",
+                    Name = "Кленовое дерево",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -896,10 +896,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Crate",
+                    Name = "Ящик куб I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -922,10 +922,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Ground Brazier",
+                    Name = "Подвесная жаровня",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -952,10 +952,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Post 4m",
+                    Name = "Бетонный столб 4м",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -979,10 +979,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Post 2m",
+                    Name = "Бетонный столб 2м",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1006,10 +1006,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Rug Large",
+                    Name = "Ковер большой",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1032,10 +1032,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Rug 2 Small",
+                    Name = "Коврик маленький",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1058,10 +1058,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Rug 2 Large",
+                    Name = "Коврик большой",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1084,10 +1084,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Rug Small",
+                    Name = "Ковер маленький",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1110,10 +1110,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Screen",
+                    Name = "Ширма сероватая",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1137,10 +1137,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Screen 2",
+                    Name = "Ширма фиолетовая",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1164,10 +1164,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Shelf Long",
+                    Name = "Полка длинная",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1190,10 +1190,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Shelf Short",
+                    Name = "Полка короткая",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1216,10 +1216,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Side Table",
+                    Name = "Боковой столик",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1242,10 +1242,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Hearth",
+                    Name = "Каменный очаг",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1270,10 +1270,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Slab",
+                    Name = "Бетонная плита",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1297,10 +1297,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Table",
+                    Name = "Столик",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1323,10 +1323,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Well",
+                    Name = "Скважина",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1351,10 +1351,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Window Tall",
+                    Name = "Окно высокое",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1377,10 +1377,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Window Medium",
+                    Name = "Окно среднее",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1403,10 +1403,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Window Short",
+                    Name = "Окно короткое",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1429,10 +1429,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Window Simple",
+                    Name = "Окно простое",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1455,10 +1455,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Window Small Stone",
+                    Name = "Окошко маленькое бентонное",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1482,10 +1482,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Window Long Stone",
+                    Name = "Окно длинное бетонное",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1509,10 +1509,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fence Heavy",
+                    Name = "Забор из бревен прямой",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1536,10 +1536,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fence Heavy Corner",
+                    Name = "Забор из бревен угловой",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1563,10 +1563,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fountain",
+                    Name = "Фонтан",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1590,10 +1590,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Cherry Blossom Tree 3",
+                    Name = "Вишневое дерево цветущая",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1617,10 +1617,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Cherry Blossom Tree 4",
+                    Name = "Вишневое дерево распустилась",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1644,10 +1644,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Barrel",
+                    Name = "Бочка I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1671,10 +1671,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Crate",
+                    Name = "Ящик куб II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1698,10 +1698,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fence Iron",
+                    Name = "Железный декаративный забор",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -1726,10 +1726,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Floor",
+                    Name = "Пол мраморно-деревянный",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1754,10 +1754,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Roof",
+                    Name = "26 Крыша",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1781,10 +1781,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Roof Corner",
+                    Name = "26 Угол крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1808,10 +1808,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена бетонная",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1836,10 +1836,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall 2",
+                    Name = "Стена дерево-дерево",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1863,10 +1863,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall 3",
+                    Name = "Стена дерево-мрамор",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1891,10 +1891,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall 4",
+                    Name = "Стена дерево-дерево",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1918,10 +1918,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Small Hearth",
+                    Name = "Небольшой очаг",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -1948,10 +1948,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Roof 2",
+                    Name = "26 Крыша 2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -1975,10 +1975,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Roof Corner 2",
+                    Name = "26 Угол крыши 2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2001,10 +2001,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Fence 4",
+                    Name = "Забор из досок",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2027,10 +2027,10 @@ namespace BuildIt
              var build = new CustomPiece(buildFab,
                  new PieceConfig
                  {
-                     Name = "Tower",
+                     Name = "Сторожевая башня",
                      AllowedInDungeons = false,
                      PieceTable = "_RKCustomTable",
-                     Category = "Outdoors",
+                     Category = "Двор",
                      Enabled = true,
                      Requirements = new RequirementConfig[]
                      {
@@ -2054,10 +2054,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wood Rack",
+                    Name = "Стопка дров",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2080,10 +2080,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Outhouse",
+                    Name = "Туалет",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2107,10 +2107,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Smokless Dimmer Hearth",
+                    Name = "Бездымный тусклый очаг",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -2137,10 +2137,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Roof 2",
+                    Name = "Бетонная лесница средняя",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -2165,10 +2165,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Roof",
+                    Name = "Бетонная лесница большая",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -2193,10 +2193,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Stone Stairs",
+                    Name = "Каменная лестница стандартная",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -2221,10 +2221,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Toilet Seat",
+                    Name = "Стульчак",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2247,10 +2247,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Beam",
+                    Name = "26 Балка",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2273,10 +2273,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Inner Roof Corner",
+                    Name = "26 Внутренний угол крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2299,10 +2299,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Inner Roof Corner",
+                    Name = "26 Внутренний угол крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2325,10 +2325,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Roof Ridge",
+                    Name = "26 Кровля крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2351,10 +2351,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Roof Ridge",
+                    Name = "26 Кровля крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2377,10 +2377,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Roof X",
+                    Name = "26 Балка иксовая",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2403,10 +2403,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Wall Top",
+                    Name = "26 Верхняя часть стены",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2429,10 +2429,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Wall Top",
+                    Name = "26 Верхняя часть стены",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2455,10 +2455,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Beam",
+                    Name = "45 Балка",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2481,10 +2481,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Inner Roof Corner",
+                    Name = "45 Внутренний угол крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2508,10 +2508,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Barrel",
+                    Name = "Бочка II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2534,10 +2534,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Inner Roof Corner",
+                    Name = "45 Внутренний угол крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2560,10 +2560,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Roof Ridge",
+                    Name = "45 Кровля крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2586,10 +2586,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Roof Ridge",
+                    Name = "45 Кровля крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2612,10 +2612,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Roof X",
+                    Name = "45 Балка иксовая",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2638,10 +2638,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Wall Top",
+                    Name = "45 Верхняя часть стены",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2664,10 +2664,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Wall Top",
+                    Name = "45 Верхняя часть стены",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2690,10 +2690,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "Половина стены I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2716,10 +2716,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "Половина стены II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2742,10 +2742,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "Половина стены III",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2768,10 +2768,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "Половина стены IV",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new RequirementConfig[]
@@ -2796,10 +2796,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "Половина стены V",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2823,10 +2823,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Door",
+                    Name = "Застекленная дверь",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2853,10 +2853,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Door",
+                    Name = "Застекленная дверь",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2883,10 +2883,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "1m Beam",
+                    Name = "Деревянная балка 1м",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2909,10 +2909,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "2m Beam",
+                    Name = "Деревянная балка 2м",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2935,10 +2935,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Darker Fence",
+                    Name = "Более темный забор",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2961,10 +2961,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Short Fence",
+                    Name = "Короткий забор",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -2987,10 +2987,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Fence",
+                    Name = "26 Забор",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3013,10 +3013,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wood Stairs",
+                    Name = "Деревянная лестница",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3040,10 +3040,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Floor",
+                    Name = "Пол деревяно-дерево",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3066,10 +3066,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Iron Fence",
+                    Name = "Железная ограда",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3092,10 +3092,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Iron Fence",
+                    Name = "26 Железная ограда",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3118,10 +3118,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Cabinet",
+                    Name = "Буфет I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3145,10 +3145,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Floor",
+                    Name = "Стеклянный пол I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3172,10 +3172,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Floor",
+                    Name = "Стеклянный пол II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3199,10 +3199,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "Стеклянная стена I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3226,10 +3226,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "Стеклянная стена II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3253,10 +3253,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Glass Roof",
+                    Name = "45 Стеклянная крыша",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3280,10 +3280,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Glass Wall",
+                    Name = "45 Стеклянная стена",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3307,10 +3307,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "Стеклянная стена III",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3334,10 +3334,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "Стеклянная стена IV",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3361,10 +3361,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "Металлическая балка",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -3389,10 +3389,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "Металлическая балка",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -3417,10 +3417,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "Металлическая балка",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -3445,10 +3445,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "Металлическая балка",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -3473,10 +3473,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "Металлическая балка",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -3500,10 +3500,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Greenhouse Counter",
+                    Name = "Прилавок тепличный",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3526,10 +3526,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Counter",
+                    Name = "Прилавок",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3553,10 +3553,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "Стеклянная стена V",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3580,10 +3580,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена XIV",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3607,10 +3607,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена XIII",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3634,10 +3634,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Sink",
+                    Name = "Раковина",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     CraftingStation = "forge",
                     Requirements = new RequirementConfig[]
@@ -3661,10 +3661,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Pot",
+                    Name = "Горшок",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3688,10 +3688,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Bonsai",
+                    Name = "Карликовое дерево",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3715,10 +3715,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "Стеклянная стена VI",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3742,10 +3742,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена XII",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3769,10 +3769,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена XI",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Roofs",
+                    Category = "Крыши",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3795,10 +3795,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь X",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3825,10 +3825,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь IX",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3855,10 +3855,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь VIII",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3885,10 +3885,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь VII",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3915,10 +3915,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "Ворота II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3945,10 +3945,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "Ворота III",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -3975,10 +3975,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "Ворота IV",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4005,10 +4005,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "Ворота V",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Outdoors",
+                    Category = "Двор",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4035,10 +4035,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь VI",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4065,10 +4065,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4095,10 +4095,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4125,10 +4125,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь III",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4155,10 +4155,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь IV",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4186,10 +4186,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Wall",
+                    Name = "45 Стена I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4213,10 +4213,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Wall",
+                    Name = "26 Стена I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4240,10 +4240,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Arch Corner",
+                    Name = "Угол арки I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4267,10 +4267,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Arch Corner",
+                    Name = "Угол арки II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4294,10 +4294,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Marble Floor",
+                    Name = "Мраморный пол 2*2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4321,10 +4321,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "1x1 Marble Floor",
+                    Name = "Мраморный пол 1*1",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4347,10 +4347,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "Дверь V",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4378,10 +4378,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Ground Brazier",
+                    Name = "Наземная жаровня",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Furniture",
+                    Category = "Обстановка",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4409,10 +4409,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4436,10 +4436,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4463,10 +4463,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "Стена III",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4490,10 +4490,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Wall",
+                    Name = "45 Стена I",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4517,10 +4517,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Wall",
+                    Name = "26 Стена II",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Структура",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4544,10 +4544,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "26 Glass Roof Corner",
+                    Name = "26 Угол стеклянной крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
@@ -4571,10 +4571,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab,
                 new PieceConfig
                 {
-                    Name = "45 Glass Roof Corner",
+                    Name = "45 Угол стеклянной крыши",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "GreenHouse",
+                    Category = "Теплица",
                     Enabled = true,
                     Requirements = new RequirementConfig[]
                     {
