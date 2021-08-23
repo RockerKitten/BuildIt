@@ -85,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EmbeddedResource Include="buildit" />
     <None Include="DoPrebuild.props" />
     <None Include="Environment.props" />
     <None Include="packages.config" />
@@ -98,6 +97,9 @@
     <None Include="Package\manifest.json" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\..\..\Downloads\AssetBundles\fresh\buildit">
+      <Link>buildit</Link>
+    </EmbeddedResource>
     <Content Include=".gitignore" />
     <Content Include="Package\icon.png" />
   </ItemGroup>
