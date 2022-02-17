@@ -7,12 +7,13 @@ using Jotunn.Managers;
 using Jotunn.Utils;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 namespace BuildIt
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
-    [NetworkCompatibility(CompatibilityLevel.OnlySyncWhenInstalled, VersionStrictness.Minor)]
+    [NetworkCompatibility(CompatibilityLevel.VersionCheckOnly, VersionStrictness.Minor)]
     internal class BuildIt : BaseUnityPlugin
     {
         public const string PluginGUID = "RockerKitten.BuildIt";
@@ -49,7 +50,7 @@ namespace BuildIt
             LoadAssets();
             LoadHammerTable();
             AddLocalizations();
-            ItemManager.OnVanillaItemsAvailable += LoadSounds;
+            PrefabManager.OnVanillaPrefabsAvailable += LoadSounds;
             
             
         }
@@ -332,25 +333,25 @@ namespace BuildIt
             {*/
                 Jotunn.Logger.LogMessage("Load Complete.");
 
-                ItemManager.OnVanillaItemsAvailable -= LoadSounds;
+                PrefabManager.OnVanillaPrefabsAvailable -= LoadSounds;
             //}
         }
 
         private void AddLocalizations()
         {
-            // Add translations for the custom piece in AddPieceCategories
-            LocalizationManager.Instance.AddLocalization(new LocalizationConfig("English")
-            {
-                Translations =
-                {
-                    {"piece_cabinet", "Cabinet"},{"tab_structure", "Structure"},{"tab_roofs", "Roofs"},
-            {"tab_outdoors", "Outdoors"},{"tab_greenhouse", "Greenhouse"},{"ImprovedHammer", "Improved Hammer"},
-            {"piece_45cornderroof", "45 Corner Roof"},{"piece_45roof", "45 Roof"},{"piece_bedrk", "Bed"},
-            {"piece_blackpinetree", "Black Pine Tree"},{"piece_bucket", "Bucket"},{"piece_candle", "Candle"},
-            {"piece_45roofridge", "45 Roof Ridge"},
-            
-                }
+            CustomLocalization customLocalization = new CustomLocalization();
+            customLocalization.AddTranslation("English", new Dictionary<String, String> {
+                // Add translations for the custom piece in AddPieceCategories
+                //LocalizationManager.Instance.AddLocalization(new CustomLocalization
+
+                 {"piece_cabinet", "Cabinet"},{"tab_structure", "Structure"},{"tab_roofs", "Roofs"},
+                {"tab_outdoors", "Outdoors"},{"tab_greenhouse", "Greenhouse"},{"ImprovedHammer", "Improved Hammer"},
+                {"piece_45cornderroof", "45 Corner Roof"},{"piece_45roof", "45 Roof"},{"piece_bedrk", "Bed"},
+                {"piece_blackpinetree", "Black Pine Tree"},{"piece_bucket", "Bucket"},{"piece_candle", "Candle"},
+                {"piece_45roofridge", "45 Roof Ridge"},
+
             });
+            LocalizationManager.Instance.AddLocalization(customLocalization);
         }
 
         private void LoadHammerTable()
@@ -394,7 +395,7 @@ namespace BuildIt
         private void LoadBuild1()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45corner_roof");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45cornerroof",
@@ -420,7 +421,7 @@ namespace BuildIt
         private void LoadBuild2()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45roof",
@@ -446,7 +447,7 @@ namespace BuildIt
         private void LoadBuild3()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45corner_roof2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45cornerroof",
@@ -472,7 +473,7 @@ namespace BuildIt
         private void LoadBuild4()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45roof",
@@ -498,7 +499,7 @@ namespace BuildIt
         private void LoadBuild5()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_bed");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_bedrk",
@@ -526,7 +527,7 @@ namespace BuildIt
         private void LoadBuild6()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_blackpine");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_blackpinetree",
@@ -552,7 +553,7 @@ namespace BuildIt
         private void LoadBuild7()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_bucket");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_bucket",
@@ -578,7 +579,7 @@ namespace BuildIt
         private void LoadBuild8()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_cabinet");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_cabinet",
@@ -604,7 +605,7 @@ namespace BuildIt
         private void LoadBuild9()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_candle");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_candle",
@@ -631,7 +632,7 @@ namespace BuildIt
         private void LoadBuild10()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_chair");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$pice_chair",
@@ -657,7 +658,7 @@ namespace BuildIt
         private void LoadBuild11()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_cherryblossom");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_cherryblossom",
@@ -683,7 +684,7 @@ namespace BuildIt
         private void LoadBuild12()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_cherryblossom2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_cherryblossom",
@@ -709,7 +710,7 @@ namespace BuildIt
         private void LoadBuild13()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -735,7 +736,7 @@ namespace BuildIt
         private void LoadBuild14()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -761,7 +762,7 @@ namespace BuildIt
         private void LoadBuild15()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fencehalf");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencehalf",
@@ -787,7 +788,7 @@ namespace BuildIt
         private void LoadBuild16()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_lamp");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_tablelamp",
@@ -814,7 +815,7 @@ namespace BuildIt
         private void LoadBuild17()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_lamphanging");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_hanginglamp",
@@ -841,7 +842,7 @@ namespace BuildIt
         private void LoadBuild18()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_lamppost");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_lamppost",
@@ -868,7 +869,7 @@ namespace BuildIt
         private void LoadBuild19()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_maple");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_mapletree",
@@ -895,7 +896,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_crate2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_crate",
@@ -921,7 +922,7 @@ namespace BuildIt
         private void LoadBuild21()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_groundbrazier");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_groundbrazier",
@@ -951,7 +952,7 @@ namespace BuildIt
         private void LoadBuild22()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_post");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_4stonepost",
@@ -978,7 +979,7 @@ namespace BuildIt
         private void LoadBuild23()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_post2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_2stonepost",
@@ -1005,7 +1006,7 @@ namespace BuildIt
         private void LoadBuild24()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_rug");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_lrug",
@@ -1031,7 +1032,7 @@ namespace BuildIt
         private void LoadBuild25()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_rug2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_srug",
@@ -1057,7 +1058,7 @@ namespace BuildIt
         private void LoadBuild26()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_rug2large");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_lrug",
@@ -1083,7 +1084,7 @@ namespace BuildIt
         private void LoadBuild27()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_rugsmall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_srug",
@@ -1109,7 +1110,7 @@ namespace BuildIt
         private void LoadBuild28()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_screen");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_screen",
@@ -1136,7 +1137,7 @@ namespace BuildIt
         private void LoadBuild29()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_screen2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_screen",
@@ -1163,7 +1164,7 @@ namespace BuildIt
         private void LoadBuild30()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_shelflong");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_lshelf",
@@ -1189,7 +1190,7 @@ namespace BuildIt
         private void LoadBuild31()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_shelfsmall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_sshelf",
@@ -1215,7 +1216,7 @@ namespace BuildIt
         private void LoadBuild32()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_sidetable");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_sidetable",
@@ -1241,7 +1242,7 @@ namespace BuildIt
         private void LoadBuild33()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_stonehearth");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_stonehearth",
@@ -1269,7 +1270,7 @@ namespace BuildIt
         private void LoadBuild34()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_stoneslab");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_stoneslab",
@@ -1296,7 +1297,7 @@ namespace BuildIt
         private void LoadBuild35()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_table");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_table",
@@ -1322,7 +1323,7 @@ namespace BuildIt
         private void LoadBuild36()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_well");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_well",
@@ -1350,7 +1351,7 @@ namespace BuildIt
         private void LoadBuild37()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_window");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_twindow",
@@ -1376,7 +1377,7 @@ namespace BuildIt
         private void LoadBuild38()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowshort");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_mwindow",
@@ -1402,7 +1403,7 @@ namespace BuildIt
         private void LoadBuild39()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowshortest");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_swindow",
@@ -1428,7 +1429,7 @@ namespace BuildIt
         private void LoadBuild40()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowplain");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_swindows",
@@ -1454,7 +1455,7 @@ namespace BuildIt
         private void LoadBuild41()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowstonesmall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_stonewindows",
@@ -1481,7 +1482,7 @@ namespace BuildIt
         private void LoadBuild42()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowstone");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_stonewindowl",
@@ -1508,7 +1509,7 @@ namespace BuildIt
         private void LoadBuild43()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fenceheavy");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_hfence",
@@ -1535,7 +1536,7 @@ namespace BuildIt
         private void LoadBuild44()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fenceheavy_corner");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_hfencecorner",
@@ -1562,7 +1563,7 @@ namespace BuildIt
         private void LoadBuild45()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fountain");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fountain",
@@ -1589,7 +1590,7 @@ namespace BuildIt
         private void LoadBuild46()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_cherryblossom3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_cherryblossom",
@@ -1616,7 +1617,7 @@ namespace BuildIt
         {
             
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_cherryblossom4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_cherryblossom",
@@ -1643,7 +1644,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_barrel");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_barrel",
@@ -1670,7 +1671,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_crate");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_crate",
@@ -1697,7 +1698,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_ironfence",
@@ -1725,7 +1726,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_floor");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_floorrk",
@@ -1753,7 +1754,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26roofrk",
@@ -1780,7 +1781,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof_corner");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26roofcorner",
@@ -1807,7 +1808,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -1835,7 +1836,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -1862,7 +1863,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_Wall3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -1890,7 +1891,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -1917,7 +1918,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_hearthsmall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Small Hearth",
@@ -1946,7 +1947,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Roof",
@@ -1973,7 +1974,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof_corner2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Roof Corner",
@@ -1999,7 +2000,7 @@ namespace BuildIt
         private void LoadBuild61()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -2025,7 +2026,7 @@ namespace BuildIt
          private void LoadBuild62()
          {
              var buildFab = assetBundle.LoadAsset<GameObject>("piece_buildtower");
-             var build = new CustomPiece(buildFab,
+             var build = new CustomPiece(buildFab, false,
                  new PieceConfig
                  {
                      Name = "Tower",
@@ -2052,7 +2053,7 @@ namespace BuildIt
         private void LoadBuild63()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_woodrack");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wood Rack",
@@ -2078,7 +2079,7 @@ namespace BuildIt
         private void LoadBuild64()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_outhouse");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Outhouse",
@@ -2105,7 +2106,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_hearthdim");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Dim Smokless Hearth",
@@ -2135,7 +2136,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_stairstone2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Stone Roof",
@@ -2163,7 +2164,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_stairstone");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Stone Roof",
@@ -2191,7 +2192,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_stairstone3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Stone Stairs",
@@ -2219,7 +2220,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_stool");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Toilet Seat",
@@ -2245,7 +2246,7 @@ namespace BuildIt
         private void LoadBuild70()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26beam");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Beam",
@@ -2271,7 +2272,7 @@ namespace BuildIt
         private void LoadBuild71()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26inner");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Inner Corner Roof",
@@ -2297,7 +2298,7 @@ namespace BuildIt
         private void LoadBuild72()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26inner2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Inner Corner Roof",
@@ -2323,7 +2324,7 @@ namespace BuildIt
         private void LoadBuild73()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26ridge");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Roof Ridge",
@@ -2349,7 +2350,7 @@ namespace BuildIt
         private void LoadBuild74()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26ridge2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Roof Ridge",
@@ -2375,7 +2376,7 @@ namespace BuildIt
         private void LoadBuild75()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26roof_x");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Roof X",
@@ -2401,7 +2402,7 @@ namespace BuildIt
         private void LoadBuild76()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Wall Top",
@@ -2427,7 +2428,7 @@ namespace BuildIt
         private void LoadBuild77()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Wall",
@@ -2453,7 +2454,7 @@ namespace BuildIt
         private void LoadBuild78()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45beam");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Beam",
@@ -2479,7 +2480,7 @@ namespace BuildIt
         private void LoadBuild79()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45inner");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Inner Corner Roof",
@@ -2506,7 +2507,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_barrel2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Barrel",
@@ -2532,7 +2533,7 @@ namespace BuildIt
         private void LoadBuild81()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45inner2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Inner Corner Roof",
@@ -2558,7 +2559,7 @@ namespace BuildIt
         private void LoadBuild82()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45ridge");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45roofridge",
@@ -2584,7 +2585,7 @@ namespace BuildIt
         private void LoadBuild83()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45ridge2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45roofridge",
@@ -2610,7 +2611,7 @@ namespace BuildIt
         private void LoadBuild84()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof_x");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Roof X",
@@ -2636,7 +2637,7 @@ namespace BuildIt
         private void LoadBuild85()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Wall",
@@ -2662,7 +2663,7 @@ namespace BuildIt
         private void LoadBuild86()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Wall Top",
@@ -2688,7 +2689,7 @@ namespace BuildIt
         private void LoadBuild87()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall5");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Half Wall",
@@ -2714,7 +2715,7 @@ namespace BuildIt
         private void LoadBuild88()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall6");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Half Wall",
@@ -2740,7 +2741,7 @@ namespace BuildIt
         private void LoadBuild89()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall7");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Half Wall",
@@ -2766,7 +2767,7 @@ namespace BuildIt
         private void LoadBuild90()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall8");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Half Wall",
@@ -2794,7 +2795,7 @@ namespace BuildIt
         private void LoadBuild91()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall9");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Half Wall",
@@ -2821,7 +2822,7 @@ namespace BuildIt
         private void LoadBuild92()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_glassdoor");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Door",
@@ -2851,7 +2852,7 @@ namespace BuildIt
         private void LoadBuild93()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_glassdoor2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Door",
@@ -2881,7 +2882,7 @@ namespace BuildIt
         private void LoadBuild94()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_1mbeam");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "1m Beam",
@@ -2907,7 +2908,7 @@ namespace BuildIt
         private void LoadBuild95()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_2mbeam");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "2m Beam",
@@ -2933,7 +2934,7 @@ namespace BuildIt
         private void LoadBuild96()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence5");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -2959,7 +2960,7 @@ namespace BuildIt
         private void LoadBuild97()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence7");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -2985,7 +2986,7 @@ namespace BuildIt
         private void LoadBuild98()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence6");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26fence",
@@ -3011,7 +3012,7 @@ namespace BuildIt
         private void LoadBuild99()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_woodstairs");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wood Stairs",
@@ -3038,7 +3039,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_floor2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_floorrk",
@@ -3064,7 +3065,7 @@ namespace BuildIt
         private void LoadBuild101()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence8");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -3090,7 +3091,7 @@ namespace BuildIt
         private void LoadBuild102()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence9");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26fence",
@@ -3116,7 +3117,7 @@ namespace BuildIt
         private void LoadBuild103()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_cabinet2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Cabinet",
@@ -3143,7 +3144,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_floor3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Floor",
@@ -3170,7 +3171,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_floor4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Floor",
@@ -3197,7 +3198,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall10");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Wall",
@@ -3224,7 +3225,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall11");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Wall",
@@ -3251,7 +3252,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Glass Roof",
@@ -3278,7 +3279,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Glass Wall",
@@ -3305,7 +3306,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Wall",
@@ -3332,7 +3333,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Wall",
@@ -3359,7 +3360,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45beam2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Metal Beam",
@@ -3387,7 +3388,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26beam2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Metal Beam",
@@ -3415,7 +3416,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_2mvertbeam");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Metal Beam",
@@ -3443,7 +3444,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_2mhorzbeam");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Metal Beam",
@@ -3471,7 +3472,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_1mbeam2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Metal Beam",
@@ -3498,7 +3499,7 @@ namespace BuildIt
         private void LoadBuild117()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_shelftable");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$tab_greenhouse Counter",
@@ -3524,7 +3525,7 @@ namespace BuildIt
         private void LoadBuild118()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_shelftable2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Counter",
@@ -3551,7 +3552,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Wall",
@@ -3578,7 +3579,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wall",
@@ -3605,7 +3606,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wall",
@@ -3632,7 +3633,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_sink");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Sink",
@@ -3659,7 +3660,7 @@ namespace BuildIt
         private void LoadBuild123()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_pot");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Pot",
@@ -3686,7 +3687,7 @@ namespace BuildIt
         private void LoadBuild124()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_bonzai");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Bonsai",
@@ -3713,7 +3714,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall6");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Glass Wall",
@@ -3740,7 +3741,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wall",
@@ -3767,7 +3768,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall5");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wall",
@@ -3793,7 +3794,7 @@ namespace BuildIt
         private void LoadBuild128()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -3823,7 +3824,7 @@ namespace BuildIt
         private void LoadBuild129()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -3853,7 +3854,7 @@ namespace BuildIt
         private void LoadBuild130()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -3883,7 +3884,7 @@ namespace BuildIt
         private void LoadBuild131()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -3913,7 +3914,7 @@ namespace BuildIt
         private void LoadBuild132()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_gate");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Gate",
@@ -3943,7 +3944,7 @@ namespace BuildIt
         private void LoadBuild133()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_gate2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Gate",
@@ -3973,7 +3974,7 @@ namespace BuildIt
         private void LoadBuild134()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_gate3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Gate",
@@ -4003,7 +4004,7 @@ namespace BuildIt
         private void LoadBuild135()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_gate4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Gate",
@@ -4033,7 +4034,7 @@ namespace BuildIt
         private void LoadBuild136()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_drawbridge");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -4063,7 +4064,7 @@ namespace BuildIt
         private void LoadBuild137()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door5");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -4093,7 +4094,7 @@ namespace BuildIt
         private void LoadBuild138()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door6");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -4123,7 +4124,7 @@ namespace BuildIt
         private void LoadBuild139()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door7");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -4153,7 +4154,7 @@ namespace BuildIt
         private void LoadBuild140()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door8");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -4184,7 +4185,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Wall",
@@ -4211,7 +4212,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall4");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Wall",
@@ -4238,7 +4239,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_curvecorner");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Arch Corner",
@@ -4265,7 +4266,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_curvecorner2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Arch Corner",
@@ -4292,7 +4293,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_floor5");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_floorrk",
@@ -4319,7 +4320,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_floorquarter");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_floorrk",
@@ -4345,7 +4346,7 @@ namespace BuildIt
         private void LoadBuild147()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door9");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Door",
@@ -4376,7 +4377,7 @@ namespace BuildIt
         private void LoadBuild148()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_brazier2");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Ground Brazier",
@@ -4407,7 +4408,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall12");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wall",
@@ -4434,7 +4435,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall13");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wall",
@@ -4461,7 +4462,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall14");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "Wall",
@@ -4488,7 +4489,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall5");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Wall",
@@ -4515,7 +4516,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall5");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Wall",
@@ -4542,7 +4543,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof_corner3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "26 Glass Corner Roof",
@@ -4569,7 +4570,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45corner_roof3");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "45 Glass Corner Roof",
@@ -4596,7 +4597,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall7");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -4623,7 +4624,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_1mbeam1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkbeam",
@@ -4650,7 +4651,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_1mpole");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkpole",
@@ -4677,7 +4678,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_1mpole1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkpole",
@@ -4704,7 +4705,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_2mbeam1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkbeam2",
@@ -4731,7 +4732,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_2mpole");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkpole2",
@@ -4758,7 +4759,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_2mpole1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkpole2",
@@ -4785,7 +4786,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26beam1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26beam",
@@ -4812,7 +4813,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26inner1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26inner",
@@ -4839,7 +4840,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26ridge1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26ridge",
@@ -4866,7 +4867,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26roof_x1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26roofx",
@@ -4893,7 +4894,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall7");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26to45",
@@ -4920,7 +4921,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall8");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26to45",
@@ -4947,7 +4948,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26to45wall9");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26to45",
@@ -4974,7 +4975,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_26wall5_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26wall",
@@ -5001,7 +5002,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45beam1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45beam",
@@ -5028,7 +5029,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45corner_roof1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45cornerroof",
@@ -5055,7 +5056,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45inner1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45innerc",
@@ -5082,7 +5083,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45ridge1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45roofridge",
@@ -5109,7 +5110,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45roof",
@@ -5136,7 +5137,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45roof_x1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45roofx",
@@ -5163,7 +5164,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_45wall5_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_45wall",
@@ -5190,7 +5191,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_curvecorner1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_curvecorner",
@@ -5217,7 +5218,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkdoor",
@@ -5244,7 +5245,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door4_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkdoor",
@@ -5271,7 +5272,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_door5_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkdoor",
@@ -5298,7 +5299,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence6_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -5325,7 +5326,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_fence7_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_fencerk",
@@ -5352,7 +5353,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_floor2_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_floorrk",
@@ -5379,7 +5380,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_gate1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkgate",
@@ -5406,7 +5407,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_glassdoor1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_glassdoor",
@@ -5433,7 +5434,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_glassdoor2_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_glassdoor",
@@ -5460,7 +5461,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_roofrk",
@@ -5487,7 +5488,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof_corner1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_26roofcorner",
@@ -5514,7 +5515,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall12_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -5541,7 +5542,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall13_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -5568,7 +5569,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_wall14_1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_wallrk",
@@ -5595,7 +5596,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_window1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_twindow",
@@ -5622,7 +5623,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowplain1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_swindows",
@@ -5649,7 +5650,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowshort1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_mwindow",
@@ -5676,7 +5677,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_windowshortest1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_swindow",
@@ -5703,7 +5704,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_woodstairs1");
-            var build = new CustomPiece(buildFab,
+            var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
                     Name = "$piece_rkstairs",
