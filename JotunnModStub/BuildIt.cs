@@ -18,7 +18,7 @@ namespace BuildIt
     {
         public const string PluginGUID = "RockerKitten.BuildIt";
         public const string PluginName = "BuildIt";
-        public const string PluginVersion = "1.4.0";
+        public const string PluginVersion = "1.5.0";
         public AssetBundle assetBundle;
         public EffectList buildStone;
         //public EffectList cookingSound;
