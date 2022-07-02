@@ -45,7 +45,7 @@ namespace BuildIt
 
         private void Awake()
         {
-            Patches.SetupPlacementHooks();
+            //Patches.SetupPlacementHooks();
             //SetupConfig();
             LoadAssets();
             LoadHammerTable();
