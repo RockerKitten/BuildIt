@@ -36,12 +36,12 @@ namespace BuildIt
         public EffectList doorClose;
         public EffectList buildWood;
         public AudioSource fireVol;
-        public GameObject repairFab;
+        //public GameObject repairFab;
 
         public CustomPieceTable ImprovedHammer;
         //public static ConfigEntry<float> placementOffsetIncrementConfig;
         //public static ConfigEntry<bool> placementOffsetEnabledConfig;
-        public static ConfigEntry<bool> hidePlaceMarkerConfig;
+        //public static ConfigEntry<bool> hidePlaceMarkerConfig;
 
         private void Awake()
         {
