@@ -46,7 +46,7 @@ namespace BuildIt
         private void Awake()
         {
             Patches.SetupPlacementHooks();
-            SetupConfig();
+            //SetupConfig();
             LoadAssets();
             LoadHammerTable();
             AddLocalizations();
@@ -55,7 +55,7 @@ namespace BuildIt
             
         }
 
-        private void SetupConfig()
+        /*private void SetupConfig()
         {
            /* placementOffsetIncrementConfig = Config.Bind(
                 "Placement", "Placement change increment", 0.01f,
@@ -63,13 +63,13 @@ namespace BuildIt
 
             placementOffsetEnabledConfig = Config.Bind(
                  "Placement", "Enable placement change with Ctrl + Alt", true,
-                 new ConfigDescription("Enable placement change when holding Ctrl and/or Alt while scrolling using the Improved Hammer"));*/
+                 new ConfigDescription("Enable placement change when holding Ctrl and/or Alt while scrolling using the Improved Hammer"));
            
             hidePlaceMarkerConfig = Config.Bind(
                  "Placement", "Hide placement marker", true,
                  new ConfigDescription("Hide the yellow placement marker while using the Improved Hammer"));
 
-        }
+        }*/
 
         public void LoadAssets()
         {
@@ -344,11 +344,36 @@ namespace BuildIt
                 // Add translations for the custom piece in AddPieceCategories
                 //LocalizationManager.Instance.AddLocalization(new CustomLocalization
 
-                 {"piece_cabinet", "Cabinet"},{"tab_structure", "Structure"},{"tab_roofs", "Roofs"},
+                {"piece_cabinet", "Cabinet"},{"tab_structure", "Structure"},{"tab_roofs", "Roofs"},
                 {"tab_outdoors", "Outdoors"},{"tab_greenhouse", "Greenhouse"},{"ImprovedHammer", "Improved Hammer"},
                 {"piece_45cornderroof", "45 Corner Roof"},{"piece_45roof", "45 Roof"},{"piece_bedrk", "Bed"},
                 {"piece_blackpinetree", "Black Pine Tree"},{"piece_bucket", "Bucket"},{"piece_candle", "Candle"},
-                {"piece_45roofridge", "45 Roof Ridge"},
+                {"piece_45roofridge", "45 Roof Ridge"},{"piece_chair","Chair"},{"piece_cherryblossom","Cherry Blossom Tree"},
+                {"piece_fencerk","Fence"},{"piece_halffence","Half Fence"},{"piece_tablelamp","Table Lamp"},{"piece_hanginglamp","Hanging Lamp"},
+                {"piece_lamppost","Lamp Post"},{"piece_mapletree","Maple Tree"},{"piece_smallcrate","Small Crate"},
+                {"piece_groundbrazier","Ground Brazier"},{"piece_4stonepost","Stone Post 4m"},{"piece_2stonepost","Stone Post 2m"},
+                {"piece_lrug","Large Rug"},{"piece_srug","Small Rug"},{"piece_screen","Screen"},{"piece_lshelf","Long Shelf"},
+                {"piece_sshelf","Short Shelf"},{"piece_sidetable","Side Table"},{"piece_stonehearth","Stone Hearth"},{"piece_stoneslab","Stone Slab"},
+                {"piece_tablerk","Table"},{"piece_well","Well"},{"piece_twindow","Window Tall"},{"piece_mwindow","Window Medium"},
+                {"piece_swindow","Window Short"},{"piece_swindows","Window Simple"},{"piece_stonewindows","Stone Window Small"},
+                {"piece_stonewindowl","Stone Window Long"},{"piece_hfence","Heavy Fence"},{"piece_hfencecorner","Heavy Fence Corner"},
+                {"piece_fountain","Fountain"},{"piece_barrel","Barrel"},{"piece_crate","Crate"},{"piece_ironfence","Iron Fence"},{"piece_floorrk","Floor"},
+                {"piece_26roofrk","26 Roof"},{"piece_26roofcorner","26 Roof Corner"},{"piece_wallrk","Wall"},{"piece_smallhearth","Small Hearth"},
+                {"piece_tower","Tower"},
+                {"piece_woodrack","Wood Rack"},{"piece_outhouse","Outhouse"},{"piece_hearthdim","Dim Smokless Hearth"},
+                {"piece_stoneroof","Stone Roof"},{"piece_stonestairs","Stone Stairs"},{"piece_rkstool","Toilet Seat"},
+                {"piece_26beam","26 Beam"},{"piece_26inner","26 Inner Corner Roof"},
+                {"piece_26ridge","26 Roof Ridge"},{"piece_26roofx","26 Roof X"},{"piece_26wall","26 Wall"},{"piece_45beam","45 Beam"},
+                {"piece_45innerc","45 Inner Corner Roof"},{"piece_45roofx","45 Roof X"},{"piece_45wall","45 Wall"},
+                {"piece_halfwall","Half Wall"},
+                {"piece_glassdoor","Glass Door"},{"piece_rkbeam","1m Beam"},{"piece_rkbeam2","2m Beam"},{"piece_rkpole","1m Pole"},
+                {"piece_rkpole2","2m Pole"},{"piece_rkstairs","Wood Stairs"},{"piece_26fence","26 Fence"},
+                {"piece_gfloor","Glass Floor"},{"piece_gwall","Glass Wall"},{"piece_45groof","45 Glass Roof"},
+                {"piece_45gwall","45 Glass Wall"},{"piece_metbeam","Metal Beam"},{"piece_ghousecounter","Greenhouse Counter"},
+                {"piece_counter","Counter"},{"piece_rksink","Sink"},{"piece_potrk","Pot"},{"piece_rkbonsai","Bonsai"},
+                {"piece_rkdoor","Door"},{"piece_rkgate","Gate"},{"piece_curvecorner","Arch Corner"},
+                {"piece_26gcroof","26 Glass Corner Roof"},{"piece_45gcroof","45 Glass Corner Roof"},
+                {"piece_26to45","26 to 45 Wall"},{"piece_rkbridge","Drawbridge"}
 
             });
             LocalizationManager.Instance.AddLocalization(customLocalization);
@@ -1921,7 +1946,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Small Hearth",
+                    Name = "$piece_smallhearth",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -1950,7 +1975,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Roof",
+                    Name = "$piece_26roofrk",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -1977,7 +2002,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Roof Corner",
+                    Name = "$piece_26roofcorner",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2029,7 +2054,7 @@ namespace BuildIt
              var build = new CustomPiece(buildFab, false,
                  new PieceConfig
                  {
-                     Name = "Tower",
+                     Name = "$piece_tower",
                      AllowedInDungeons = false,
                      PieceTable = "_RKCustomTable",
                      Category = "$tab_outdoors",
@@ -2056,7 +2081,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wood Rack",
+                    Name = "$piece_woodrack",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -2082,7 +2107,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Outhouse",
+                    Name = "$piece_outhouse",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_outdoors",
@@ -2109,7 +2134,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Dim Smokless Hearth",
+                    Name = "$piece_hearthdim",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -2139,7 +2164,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Stone Roof",
+                    Name = "$piece_stoneroof",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2167,7 +2192,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Stone Roof",
+                    Name = "$piece_stoneroof",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2195,7 +2220,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Stone Stairs",
+                    Name = "$piece_stonestairs",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2223,7 +2248,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Toilet Seat",
+                    Name = "$piece_rkstool",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_outdoors",
@@ -2249,7 +2274,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Beam",
+                    Name = "$piece_26beam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2275,7 +2300,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Inner Corner Roof",
+                    Name = "$piece_26inner",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2301,7 +2326,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Inner Corner Roof",
+                    Name = "$piece_26inner",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2327,7 +2352,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Roof Ridge",
+                    Name = "$piece_26ridge",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2353,7 +2378,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Roof Ridge",
+                    Name = "$piece_26ridge",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2379,7 +2404,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Roof X",
+                    Name = "$piece_26roofx",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2405,7 +2430,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Wall Top",
+                    Name = "$piece_26wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2431,7 +2456,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Wall",
+                    Name = "$piece_26wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2457,7 +2482,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Beam",
+                    Name = "$piece_45beam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2483,7 +2508,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Inner Corner Roof",
+                    Name = "$piece_45innerc",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2510,7 +2535,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Barrel",
+                    Name = "$piece_barrel",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -2536,7 +2561,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Inner Corner Roof",
+                    Name = "$piece_45innerc",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2614,7 +2639,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Roof X",
+                    Name = "$piece_45roofx",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2640,7 +2665,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Wall",
+                    Name = "$piece_45wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2666,7 +2691,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Wall Top",
+                    Name = "$piece_45wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -2692,7 +2717,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "$piece_halfwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2718,7 +2743,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "$piece_halfwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2744,7 +2769,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "$piece_halfwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2770,7 +2795,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "$piece_halfwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2798,7 +2823,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Half Wall",
+                    Name = "$piece_halfwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2825,7 +2850,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Door",
+                    Name = "$piece_glassdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2855,7 +2880,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Door",
+                    Name = "$piece_glassdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2885,7 +2910,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "1m Beam",
+                    Name = "$piece_rkbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -2911,7 +2936,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "2m Beam",
+                    Name = "$piece_rkbeam2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -3015,7 +3040,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wood Stairs",
+                    Name = "$piece_rkstairs",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -3120,7 +3145,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Cabinet",
+                    Name = "$piece_cabinet",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -3147,7 +3172,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Floor",
+                    Name = "$piece_gfloor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3174,7 +3199,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Floor",
+                    Name = "$piece_gfloor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3201,7 +3226,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "$piece_gwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3228,7 +3253,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "$piece_gwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3255,7 +3280,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Glass Roof",
+                    Name = "$piece_45groof",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3282,7 +3307,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Glass Wall",
+                    Name = "$piece_45gwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3309,7 +3334,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "$piece_gwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3336,7 +3361,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "$piece_gwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3363,7 +3388,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "$piece_metbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3391,7 +3416,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "$piece_metbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3419,7 +3444,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "$piece_metbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3447,7 +3472,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "$piece_metbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3475,7 +3500,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Metal Beam",
+                    Name = "$piece_metbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3502,7 +3527,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "$tab_greenhouse Counter",
+                    Name = "$piece_ghousecounter",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3528,7 +3553,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Counter",
+                    Name = "$piece_counter",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -3555,7 +3580,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "$piece_gwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3582,7 +3607,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "$piece_26to45",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -3609,7 +3634,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "$piece_26to45",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -3636,7 +3661,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Sink",
+                    Name = "$piece_rksink",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -3663,7 +3688,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Pot",
+                    Name = "$piece_potrk",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3690,7 +3715,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Bonsai",
+                    Name = "$piece_rkbonsai",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3717,7 +3742,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Glass Wall",
+                    Name = "$piece_gwall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3744,7 +3769,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "$piece_26to45",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -3771,7 +3796,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "$piece_26to45",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_roofs",
@@ -3797,7 +3822,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -3827,7 +3852,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -3857,7 +3882,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -3887,7 +3912,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -3917,7 +3942,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "$piece_rkgate",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_outdoors",
@@ -3947,7 +3972,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "$piece_rkgate",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_outdoors",
@@ -3977,7 +4002,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "$piece_rkgate",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_outdoors",
@@ -4007,7 +4032,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Gate",
+                    Name = "$piece_rkgate",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_outdoors",
@@ -4037,7 +4062,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkbridge",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4067,7 +4092,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4097,7 +4122,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4127,7 +4152,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4157,7 +4182,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4188,7 +4213,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Wall",
+                    Name = "$piece_45wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4215,7 +4240,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Wall",
+                    Name = "$piece_26wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4242,7 +4267,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Arch Corner",
+                    Name = "$piece_curvecorner",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4269,7 +4294,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Arch Corner",
+                    Name = "$piece_curvecorner",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4349,7 +4374,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Door",
+                    Name = "$piece_rkdoor",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4380,7 +4405,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Ground Brazier",
+                    Name = "$piece_groundbrazier",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_furniture",
@@ -4411,7 +4436,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "$piece_wallrk",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4438,7 +4463,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "$piece_wallrk",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4465,7 +4490,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "Wall",
+                    Name = "$piece_wallrk",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4492,7 +4517,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Wall",
+                    Name = "$piece_45wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4519,7 +4544,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Wall",
+                    Name = "$piece_26wall",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_structure",
@@ -4546,7 +4571,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "26 Glass Corner Roof",
+                    Name = "$piece_26gcroof",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
@@ -4573,7 +4598,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "45 Glass Corner Roof",
+                    Name = "$piece_45gcroof",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "$tab_greenhouse",
