@@ -51,8 +51,7 @@ namespace BuildIt
             AddLocalizations();
             //LoadHammerTable();
             PrefabManager.OnVanillaPrefabsAvailable += LoadSounds;
-            
-            
+
         }
 
         /*private void SetupConfig()
@@ -275,7 +274,7 @@ namespace BuildIt
             LoadBuild67();
             LoadBuild66();
             LoadBuild68();
-            LoadBuild202();
+           // LoadBuild202();
             //doors
             LoadBuild128();
             LoadBuild179();
@@ -334,7 +333,7 @@ namespace BuildIt
             LoadBuild155();
             LoadBuild110();
             LoadBuild154();
-            //metal
+            //metal and greenhouse
             LoadBuild116();
             LoadBuild115();
             LoadBuild204();
@@ -342,6 +341,8 @@ namespace BuildIt
             LoadBuild113();
             LoadBuild112();
             LoadBuild117();
+            LoadBuild123();
+            LoadBuild124();
 
                 /*LoadBuild76();
                 LoadBuild77();
@@ -597,7 +598,8 @@ namespace BuildIt
                 {"piece_counter","Counter"},{"piece_rksink","Sink"},{"piece_potrk","Pot"},{"piece_rkbonsai","Bonsai"},
                 {"piece_rkdoor","Door"},{"piece_rkgate","Gate"},{"piece_curvecorner","Arch Corner"},
                 {"piece_26gcroof","26 Glass Corner Roof"},{"piece_45gcroof","45 Glass Corner Roof"},
-                {"piece_26to45","26 to 45 Wall"},{"piece_rkbridge","Drawbridge"},{"piece_26groof","26 Glass Roof"}
+                {"piece_26to45","26 to 45 Wall"},{"piece_rkbridge","Drawbridge"},{"piece_26groof","26 Glass Roof"},{"piece_metpole1","1m Metal Pole"}
+                ,{"piece_metpole2","2m Metal Pole"},{"piece_metbeam1","1m Metal Beam"},{"piece_metbeam2","2m Metal Beam"},{"piece_hangbrazier","Hanging Brazier"}
 
             });
             LocalizationManager.Instance.AddLocalization(customLocalization);
@@ -1207,7 +1209,7 @@ namespace BuildIt
                     Name = "$piece_4stonepost",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new[]
@@ -1234,7 +1236,7 @@ namespace BuildIt
                     Name = "$piece_2stonepost",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     CraftingStation = "piece_stonecutter",
                     Requirements = new[]
@@ -2501,7 +2503,7 @@ namespace BuildIt
                     Name = "$piece_26beam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -2631,7 +2633,7 @@ namespace BuildIt
                     Name = "$piece_26roofx",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -2709,7 +2711,7 @@ namespace BuildIt
                     Name = "$piece_45beam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -2866,7 +2868,7 @@ namespace BuildIt
                     Name = "$piece_45roofx",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -3137,7 +3139,7 @@ namespace BuildIt
                     Name = "$piece_rkbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -3163,7 +3165,7 @@ namespace BuildIt
                     Name = "$piece_rkbeam2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -3668,7 +3670,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "$piece_metbeam",
+                    Name = "$piece_metpole2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "Greenhouse",
@@ -3696,7 +3698,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "$piece_metbeam",
+                    Name = "$piece_metbeam2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "Greenhouse",
@@ -3724,7 +3726,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "$piece_metbeam",
+                    Name = "$piece_metbeam1",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "Greenhouse",
@@ -4629,7 +4631,7 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "$piece_groundbrazier",
+                    Name = "$c",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
                     Category = "Furniture",
@@ -4879,7 +4881,7 @@ namespace BuildIt
                     Name = "$piece_rkbeam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -4906,7 +4908,7 @@ namespace BuildIt
                     Name = "$piece_rkpole",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -4933,7 +4935,7 @@ namespace BuildIt
                     Name = "$piece_rkpole",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -4960,7 +4962,7 @@ namespace BuildIt
                     Name = "$piece_rkbeam2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -4987,7 +4989,7 @@ namespace BuildIt
                     Name = "$piece_rkpole2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -5014,7 +5016,7 @@ namespace BuildIt
                     Name = "$piece_rkpole2",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -5041,7 +5043,7 @@ namespace BuildIt
                     Name = "$piece_26beam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -5122,7 +5124,7 @@ namespace BuildIt
                     Name = "$piece_26roofx",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -5257,7 +5259,7 @@ namespace BuildIt
                     Name = "$piece_45beam",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -5392,7 +5394,7 @@ namespace BuildIt
                     Name = "$piece_45roofx",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
                     {
@@ -6089,7 +6091,7 @@ namespace BuildIt
 
             PieceManager.Instance.AddPiece(build);
         }
-        private void LoadBuild202()
+        /*private void LoadBuild202()
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_stairstone4");
@@ -6116,7 +6118,7 @@ namespace BuildIt
             breakfx.m_hitEffect = hitStone;
 
             PieceManager.Instance.AddPiece(build);
-        }
+        }*/
         private void LoadBuild203()
         {
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_drawbridge2");
@@ -6154,10 +6156,10 @@ namespace BuildIt
             var build = new CustomPiece(buildFab, false,
                 new PieceConfig
                 {
-                    Name = "$piece_rkpole",
+                    Name = "$piece_metpole1",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
-                    Category = "Structure",
+                    Category = "Greenhouse",
                     Enabled = true,
                     Requirements = new[]
                     {

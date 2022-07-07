@@ -4,13 +4,13 @@
 ### by RockerKitten
 
 Ads Several build pieces including roofs, walls, windows, trees (placeable not plantable), and many more.
-to use you must have Jotunn the Valheim Lib and it's dependant Hook Gen Patcher. Install those as directed by their mod pages, then install Build It.
-To build the items you will need the ImprovedHammer that can be made at the workbench.
+to use you must have Jotunn the Valheim Lib. Install it as directed by the JVL mod page, then install Build It.
+To build the items you will need the Improved Hammer that can be made at the workbench. (prefab ID rk_hammer)
 This mod can be used with Precise rotation as is, and Gizmo reloaded by adding "ImprovedHammer" in the config.
 Build It is not currently compatible with build camera as build camera needs to have tools added to the base code. (Find me on discord and I can help you with a work around.)
 More items coming soon! 
 
-##Current count is 155 new build pieces!
+##Current count is 204 new build pieces!
 
 v. 1.1.0 Hotfix for compatibility with Better Wards, and added 24 new build pieces, rounding out roofs and adding 2 new doors. Also fixed the Post on the outside of the heavy fence.
 v. 1.1.1 Hotfix for colliders and HP on Heavy Fence and fix for "floating" stone posts. and yet more build pieces...
@@ -21,3 +21,4 @@ v. 1.5.0 Updated for newest JVL, removed MMHook requirement!, added a bunch of n
 
 ## Questions, Comments, or Concerns?
 ### Find me on Discord by joining [Odin Team Channel](https://discord.gg/hfgmEc2hXt)
+### For those asking you can donate here and [Buy Me A Coffee](https://www.buymeacoffee.com/RockerKitten)

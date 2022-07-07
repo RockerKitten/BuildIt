@@ -3,5 +3,6 @@
   <PropertyGroup>
     <!-- Needs to be your path to the base Valheim folder -->
     <VALHEIM_INSTALL>C:\Program Files (x86)\Steam\steamapps\common\Valheim</VALHEIM_INSTALL>
+    <PublicizedAssembliesPath>C:\Program Files (x86)\Steam\steamapps\common\Valheim\valheim_Data\Managed\publicized_assemblies</PublicizedAssembliesPath>
   </PropertyGroup>
 </Project>

@@ -1,45 +1,76 @@
 
-76  rk_26wall
+94  rk_1mbeam
+95  rk_2mbeam
+158 rk_1mpole
+161 rk_2mpole
+70  rk_26beam
+78  rk_45beam
+75  rk_26roof_x
+84  rk_45roof_x
+157 rk_1mbeam1
+160 rk_2mbeam1
+159 rk_1mpole1
+162 rk_2mpole1
+163 rk_26beam1
+171 rk_45beam1
+166 rk_26roof_x1
+176 rk_45roof_x1
+22  rk_post
+23  rk_post2
+
+Dark
+120 rk_26to45wall2
+121 rk_26to45wall3
+126 rk_26to45wall4
+156 rk_26to45wall7
 77  rk_26wall2
 142	rk_26wall4
-70  rk_26beam
-75  rk_26roof_x
+153 rk_26wall5
+86  rk_45wall2
+141	rk_45wall4
+152	rk_45wall5
+143	rk_curvecorner
+144	rk_curvecorner2
+
+Light
+168 rk_26to45wall8
+169 rk_26to45wall9
+170 rk_26wall5_1
+177 rk_45wall5_1
+178 rk_curvecorner1
+
+Stone
+199	rk_26to45wall2_1
+127 rk_26to45wall5
+76  rk_26wall
+85 	rk_45wall
+
 52  rk_roof
 53  rk_roof_corner
-188 rk_roof1
-189 rk_roof_corner1
 71  rk_26inner
 73  rk_26ridge
+188 rk_roof1
+189 rk_roof_corner1
+164 rk_26inner1
+165 rk_26ridge1
 59  rk_roof2
 60  rk_roof_corner2
 72  rk_26inner2
-164 rk_26inner1
-165 rk_26ridge1
 74  rk_26ridge2
-120 rk_26to45wall2
-126 rk_26to45wall4
-121 rk_26to45wall3
-127 rk_26to45wall5
-85 	rk_45wall
-86  rk_45wall2
-141	rk_45wall4
-78  rk_45beam
-84  rk_45roof_x
+
 2   rk_45roof
 1 	rk_45corner_roof
 79  rk_45inner
 82  rk_45ridge
+175 rk_45roof1
+172 rk_45corner_roof1
+173 rk_45inner1
+174 rk_45ridge1
 4 	rk_45roof2
 3 	rk_45corner_roof2
 81  rk_45inner2
 83  rk_45ridge2
-172 rk_45corner_roof1
-173 rk_45inner1
-174 rk_45ridge1
-175 rk_45roof1
-176 rk_45roof_x1
-94  rk_1mbeam
-95  rk_2mbeam
+
 48  rk_barrel
 80  rk_barrel2
 49  rk_crate
@@ -50,23 +81,28 @@
 12  rk_cherryblossom2
 46  rk_cherryblossom3
 47  rk_cherryblossom4
-13  rk_fence
-96  rk_fence5
-98  rk_fence6
+
+132 rk_gate
 97  rk_fence7
+98  rk_fence6
+96  rk_fence5
+185 rk_gate1
+183 rk_fence7_1
+182 rk_fence6_1
+13  rk_fence
+133 rk_gate2
 14  rk_fence2
+134 rk_gate3
 50  rk_fence3
+135 rk_gate4
 61  rk_fence4
 101 rk_fence8
 102 rk_fence9
-132 rk_gate
-133 rk_gate2
-134 rk_gate3
-135 rk_gate4
 15  rk_fencehalf
+62  piece_buildtower
 43  rk_fenceheavy
 44  rk_fenceheavy_corner
-62  piece_buildtower
+
 45  rk_fountain
 27  rk_rugsmall
 24  rk_rug
@@ -79,64 +115,77 @@
 35  rk_table
 7 	rk_bucket
 32  rk_sidetable
-99  rk_woodstairs
-67  rk_stairstone
-66  rk_stairstone2
-68  rk_stairstone3
+	
 122 rk_sink
 118 rk_shelftable2
 8 	rk_cabinet
 103 rk_cabinet2
 30  rk_shelflong
 31  rk_shelfsmall
-54  rk_wall
+
 55  rk_wall2
-56  rk_wall3
+89  rk_wall7
+200	rk_wall17_1
+88  rk_wall6
 57  rk_wall4
 87  rk_wall5
-88  rk_wall6
-89  rk_wall7
-90  rk_wall8
-91  rk_wall9
-150	rk_wall12
-151	rk_wall13
+205	rk_wall15_1
+149	rk_wall12
+150	rk_wall13
 151	rk_wall14
 190 rk_wall12_1
-191 rk_wall3_1
+191 rk_wall13_1
 192 rk_wall4_1
-152	rk_45wall5
-153 rk_26wall5
-143	rk_curvecorner
-144	rk_curvecorner2
+54  rk_wall
+90  rk_wall8
+167	rk_wall15
+201	rk_wall16
+56  rk_wall3
+91  rk_wall9
+
+100 rk_floor2
+184	rk_floor6
+198	rk_floor7
+51  rk_floor
+145	rk_floor5
+146	rk_floorquarter
+34  rk_stoneslab
+99  rk_woodstairs
+197 rk_woodstairs1
+67  rk_stairstone
+66  rk_stairstone2
+68  rk_stairstone3
+202	rk_stairstone4
+
+128 rk_door
+179 rk_door1
+129 rk_door2
+131 rk_door4
+180 rk_door4_1
 137	rk_door5
+181 rk_door5_1
 138	rk_door6
 139	rk_door7
 140	rk_door8
 147	rk_door9
 136	rk_drawbridge
-51  rk_floor
-100 rk_floor2
-145	rk_floor5
-146	rk_floorquarter
-34  rk_stoneslab
-22  rk_post
-23  rk_post2
-36  rk_well
-37  rk_window
-38  rk_windowshort
+203	rk_drawbridge2
+
+40  rk_windowplain	
 39  rk_windowshortest
-40  rk_windowplain
-42  rk_windowstone
-41  rk_windowstonesmall4
-193 rk_window1
-194 rk_windowplain1
-195 rk_windowshort1
-196 rk_windowshortest1
+38  rk_windowshort
+37  rk_window
 92  rk_glassdoor
 93  rk_glassdoor2
-128 rk_door
-129 rk_door2
-131 rk_door4
+194 rk_windowplain1
+196 rk_windowshortest1
+195 rk_windowshort1
+193 rk_window1
+186 rk_glassdoor1
+187 rk_glassdoor2_1
+41  rk_windowstonesmall
+42  rk_windowstone
+36  rk_well
 63  rk_woodrack
 69  rk_stool
 64  rk_outhouse
@@ -153,53 +202,32 @@
 _RKCustomTable
 rk_hammer
 
-130 rk_door3
-186 rk_glassdoor1
-187 rk_glassdoor2_1
+Glass
 104 rk_floor3
 105 rk_floor4
+130 rk_door3
 106 rk_wall10
 107 rk_wall11
-108 rk_45roof3
-109 rk_45wall3
-110 rk_roof3
 111 rk_26wall3
+109 rk_45wall3
 119 rk_26to45wall
 125 rk_26to45wall6
-
-112 rk_45beam2
-113 rk_26beam2
-114 rk_2mvertbeam
-115 rk_2mhorzbeam
-116 rk_1mbeam2
-117 rk_shelftable
-
-154	rk_roof_corner3
+108 rk_45roof3
 155	rk_45corner_roof3
+110 rk_roof3
+154	rk_roof_corner3
+	
 
-156 rk_26to45wall7
-157 rk_1mbeam1
-158 rk_1mpole
-159 rk_1mpole1
-160 rk_2mbeam1
-161 rk_2mpole
-162 rk_2mpole1
-163 rk_26beam1
-166 rk_26roof_x1
-167 rk_26to45wall7(dark)?
-168 rk_26to45wall8
-169 rk_26to45wall9
-170 rk_26wall5_1
-171 rk_45beam1
-177 rk_45wall5_1
-178 rk_curvecorner1
-179 rk_door1
-180 rk_door4_1
-181 rk_door5_1
-182 rk_fence6_1
-183 rk_fence7_1
-184 rk_floor2_1
-185 rk_gate1
 
-197 rk_woodstairs1
+116 rk_1mbeam2
+115 rk_2mhorzbeamd
+204	rk_1mpole2
+114 rk_2mvertbeam
+113 rk_26beam2
+112 rk_45beam2
+117 rk_shelftable
+123 rk_pot
+124 rk_bonzai
+
+
 
