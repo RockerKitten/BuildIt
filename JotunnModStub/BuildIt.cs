@@ -652,6 +652,7 @@ namespace BuildIt
                     Name = "$piece_45cornerroof",
                     AllowedInDungeons = false,
                     PieceTable = "_RKCustomTable",
+                    
                     Category = "Roofs",
                     Enabled = true,
                     Requirements = new[]
