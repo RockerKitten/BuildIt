@@ -1,10 +1,10 @@
 ﻿{
   "name": "BuildIt",
   "description": "",
-  "version_number": "1.5.0",
+  "version_number": "1.6.1",
   "website_url": "",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.1901",
-    "ValheimModding-Jotunn-2.7.0"
+    "ValheimModding-Jotunn-2.7.7"
   ]
 }

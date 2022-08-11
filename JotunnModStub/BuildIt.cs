@@ -18,7 +18,7 @@ namespace BuildIt
     {
         public const string PluginGUID = "RockerKitten.BuildIt";
         public const string PluginName = "BuildIt";
-        public const string PluginVersion = "1.5.0";
+        public const string PluginVersion = "1.6.2";
         public AssetBundle assetBundle;
         public EffectList buildStone;
         //public EffectList cookingSound;
@@ -287,6 +287,13 @@ namespace BuildIt
             LoadBuild139();
             LoadBuild140();
             LoadBuild147();
+            LoadBuild206();
+            LoadBuild207();
+            LoadBuild208();
+            LoadBuild209();
+            LoadBuild210();
+            LoadBuild211();
+
             LoadBuild136();
             LoadBuild203();
             //windows
@@ -668,6 +675,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild2()
@@ -693,6 +709,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -720,6 +745,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild4()
@@ -745,6 +779,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -2006,7 +2049,7 @@ namespace BuildIt
         {
 
             var buildFab = assetBundle.LoadAsset<GameObject>("rk_roof");
-            var build = new CustomPiece(buildFab, false,
+            var build = new CustomPiece(buildFab, true,
                 new PieceConfig
                 {
                     Name = "$piece_26roofrk",
@@ -2026,6 +2069,19 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            //var shaderReplace = buildFab.GetComponentInChildren<Material>();
+            //var shaderReplace = buildFab.GetComponentInChildren<Material>().name = "replace";
+            //foreach (Material material in buildFab.GetComponentInChildren<Material>())
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                   // mat.CopyPropertiesFromMaterial
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -2053,6 +2109,14 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -2220,6 +2284,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild60()
@@ -2246,6 +2319,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -2410,6 +2492,15 @@ namespace BuildIt
             breakfx.m_destroyedEffect = breakStone;
             breakfx.m_hitEffect = hitStone;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild67()
@@ -2437,6 +2528,15 @@ namespace BuildIt
             var breakfx = buildFab.GetComponent<WearNTear>();
             breakfx.m_destroyedEffect = breakStone;
             breakfx.m_hitEffect = hitStone;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -2545,6 +2645,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild72()
@@ -2570,6 +2679,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -2597,6 +2715,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild74()
@@ -2622,6 +2749,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -2753,6 +2889,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild80()
@@ -2806,6 +2951,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild82()
@@ -2832,6 +2986,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild83()
@@ -2857,6 +3020,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -3578,6 +3750,15 @@ namespace BuildIt
             var breakfx = buildFab.GetComponent<WearNTear>();
             breakfx.m_destroyedEffect = breakStone;
             breakfx.m_hitEffect = hitStone;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -4816,6 +4997,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild155()
@@ -5086,6 +5276,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild165()
@@ -5112,6 +5311,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -5302,6 +5510,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild173()
@@ -5328,6 +5545,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -5356,6 +5582,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild175()
@@ -5382,6 +5617,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -5736,6 +5980,15 @@ namespace BuildIt
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
 
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
+
             PieceManager.Instance.AddPiece(build);
         }
         private void LoadBuild189()
@@ -5762,6 +6015,15 @@ namespace BuildIt
             var fxHit = buildFab.GetComponent<WearNTear>();
             fxHit.m_hitEffect = hitWood;
             fxHit.m_destroyedEffect = breakWood;
+
+            var material = buildFab.GetComponentsInChildren<Material>();
+            foreach (Material mat in material)
+            {
+                if (mat.name == "replace")
+                {
+                    mat.shader = Shader.Find("Custom/Piece");
+                }
+            }
 
             PieceManager.Instance.AddPiece(build);
         }
@@ -6204,6 +6466,185 @@ namespace BuildIt
 
             PieceManager.Instance.AddPiece(build);
         }
+        private void LoadBuild206()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_door10");
+            var build = new CustomPiece(buildFab, false,
+                new PieceConfig
+                {
+                    Name = "$piece_rkdoor",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                    }
 
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            var door = buildFab.GetComponent<Door>();
+            door.m_closeEffects = doorClose;
+            door.m_openEffects = doorOpen;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild207()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_door11");
+            var build = new CustomPiece(buildFab, false,
+                new PieceConfig
+                {
+                    Name = "$piece_rkdoor",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            var door = buildFab.GetComponent<Door>();
+            door.m_closeEffects = doorClose;
+            door.m_openEffects = doorOpen;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild208()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_door12");
+            var build = new CustomPiece(buildFab, false,
+                new PieceConfig
+                {
+                    Name = "$piece_rkdoor",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            var door = buildFab.GetComponent<Door>();
+            door.m_closeEffects = doorClose;
+            door.m_openEffects = doorOpen;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild209()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_door13");
+            var build = new CustomPiece(buildFab, false,
+                new PieceConfig
+                {
+                    Name = "$piece_rkdoor",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            var door = buildFab.GetComponent<Door>();
+            door.m_closeEffects = doorClose;
+            door.m_openEffects = doorOpen;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild210()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_door14");
+            var build = new CustomPiece(buildFab, false,
+                new PieceConfig
+                {
+                    Name = "$piece_rkdoor",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            var door = buildFab.GetComponent<Door>();
+            door.m_closeEffects = doorClose;
+            door.m_openEffects = doorOpen;
+
+            PieceManager.Instance.AddPiece(build);
+        }
+        private void LoadBuild211()
+        {
+            var buildFab = assetBundle.LoadAsset<GameObject>("rk_door15");
+            var build = new CustomPiece(buildFab, false,
+                new PieceConfig
+                {
+                    Name = "$piece_rkdoor",
+                    AllowedInDungeons = false,
+                    PieceTable = "_RKCustomTable",
+                    Category = "Structure",
+                    Enabled = true,
+                    Requirements = new[]
+                    {
+                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                    }
+
+                });
+            var fxBuild = buildFab.GetComponent<Piece>();
+            fxBuild.m_placeEffect = buildWood;
+
+            var fxHit = buildFab.GetComponent<WearNTear>();
+            fxHit.m_hitEffect = hitWood;
+            fxHit.m_destroyedEffect = breakWood;
+
+            var door = buildFab.GetComponent<Door>();
+            door.m_closeEffects = doorClose;
+            door.m_openEffects = doorOpen;
+
+            PieceManager.Instance.AddPiece(build);
+        }
     }
 }
