@@ -112,6 +112,9 @@
     <None Include="app.config" />
     <None Include="DoPrebuild.props" />
     <None Include="Environment.props" />
+    <EmbeddedResource Include="G:\Valheim_Unity\valheim\Valheim DllExport - 2023-03-31\AssetBundles\StandaloneWindows\buildit">
+      <Link>buildit</Link>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Package\README.md" />
   </ItemGroup>
@@ -122,9 +125,6 @@
     <None Include="Package\manifest.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\..\..\Downloads\AssetBundles\fresh\buildit">
-      <Link>buildit</Link>
-    </EmbeddedResource>
     <Content Include=".gitignore" />
     <Content Include="Package\icon.png" />
   </ItemGroup>
