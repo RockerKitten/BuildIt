@@ -1158,7 +1158,8 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                        new RequirementConfig {Item = "FineWood", Amount = 10, Recover = true},
+                        new RequirementConfig {Item = "Iron", Amount = 2, Recover = true}
                     }
 
                 });
@@ -1906,7 +1907,8 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                        new RequirementConfig {Item = "FineWood", Amount = 10, Recover = true},
+                        new RequirementConfig {Item = "Iron", Amount = 2, Recover = true}
                     }
 
                 });
@@ -1933,7 +1935,8 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                        new RequirementConfig {Item = "FineWood", Amount = 10, Recover = true},
+                        new RequirementConfig {Item = "Iron", Amount = 2, Recover = true}
                     }
 
                 });
@@ -2769,7 +2772,8 @@ namespace BuildIt
                     Enabled = true,
                     Requirements = new[]
                     {
-                        new RequirementConfig {Item = "Wood", Amount = 6, Recover = true}
+                        new RequirementConfig {Item = "FineWood", Amount = 10, Recover = true},
+                        new RequirementConfig {Item = "Iron", Amount = 2, Recover = true}
                     }
 
                 });
